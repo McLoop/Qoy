@@ -32,7 +32,7 @@
 				isotope: $(".isotope"),
 				radio: $("input[type='radio']"),
 				checkbox: $("input[type='checkbox']"),
-				preloader: $(".preloader"),
+				preloader: $(".lds-ring"),
 				captcha: $('.recaptcha'),
 				scroller: $(".scroll-wrap"),
 				lightGallery:            $( '[data-lightgallery="group"]' ),
