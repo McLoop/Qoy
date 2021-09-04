@@ -40,7 +40,7 @@
                   <button class="rd-navbar-toggle" data-rd-navbar-toggle=".rd-navbar-nav-wrap"><span></span></button>
                   <!-- RD Navbar Brand-->
                   <div class="rd-navbar-brand">
-                    <a class="brand" href="index.html"><img class="brand-logo-dark" src="{{ asset('images/logo-198x66.png') }}" alt="" width="198" height="66"/></a>
+                    <a class="brand" href="index.html"><img class="brand-logo-dark" src="{{ asset('images/LOGO.png') }}" alt="" width="198" height="66"/></a>
                   </div>
                 </div>
                 <div class="rd-navbar-right rd-navbar-nav-wrap">
@@ -48,8 +48,16 @@
                     <ul class="rd-navbar-contacts-2">
                       <li>
                         <div class="unit unit-spacing-xs">
-                          <div class="unit-left"><i id="icon-y" class="fas fa-info-circle fa-lg"></i></div>
-                          <div class="unit-body"><a href="#">El sitio donde puede encontrar todo ¡GRATIS!</a></div>
+                          <div class="unit-left"><i class="icon-y fas fa-info-circle fa-lg"></i></div>
+                          <div class="unit-body"><a class="text-theme" href="#">El sitio donde puede encontrar todo ¡GRATIS!</a></div>
+                        </div>
+                      </li>
+                    </ul>
+                    <ul class="rd-navbar-contacts-2">
+                      <li>
+                        <div class="unit unit-spacing-xs">
+                          <div class="unit-left"><i class="icon-y fas fa-info-circle fa-lg"></i></div>
+                          <div class="unit-body"><a class="text-theme" href="#">aaaa</a></div>
                         </div>
                       </li>
                     </ul>
@@ -61,19 +69,19 @@
                   <div class="rd-navbar-main">
                     <!-- RD Navbar Nav-->
                     <ul class="rd-navbar-nav">
-                      <li class="rd-nav-item active"><a class="rd-nav-link" href="#info1">¿Quienes somos?</a>
+                      <li class="rd-nav-item active"><a class="rd-nav-link text-theme text-a-no-hover" href="#info1">¿Quienes somos?</a>
                       </li>
-                      <li class="rd-nav-item"><a class="rd-nav-link" href="#info2">¿Qué hacemos?</a>
+                      <li class="rd-nav-item"><a class="rd-nav-link text-theme text-a-no-hover" href="#info2">¿Qué hacemos?</a>
                       </li>
-                      <li class="rd-nav-item"><a class="rd-nav-link" href="#info3">Unete</a>
+                      <li class="rd-nav-item"><a class="rd-nav-link text-theme text-a-no-hover" href="#info3">Unete</a>
                       </li>
                     </ul>
                   </div>
                 </div>
-                <div class="rd-navbar-project-hamburger rd-navbar-project-hamburger-open rd-navbar-fixed-element-1" data-multitoggle=".rd-navbar-inner" data-multitoggle-blur=".rd-navbar-wrap" data-multitoggle-isolate="data-multitoggle-isolate">
+                <!--<div class="rd-navbar-project-hamburger rd-navbar-project-hamburger-open rd-navbar-fixed-element-1" data-multitoggle=".rd-navbar-inner" data-multitoggle-blur=".rd-navbar-wrap" data-multitoggle-isolate="data-multitoggle-isolate">
                   <div class="project-hamburger"><span class="project-hamburger-arrow"></span><span class="project-hamburger-arrow"></span><span class="project-hamburger-arrow"></span>
                   </div>
-                </div>
+                </div>-->
                 <div class="rd-navbar-project">
                   <div class="rd-navbar-project-header">
                     <h5 class="rd-navbar-project-title">Gallery</h5>
@@ -138,7 +146,6 @@
 
       <!-- inicio body -->
       <section id="info1">
-        <h2>hasalksf</h2>
       </section>
       <section id="info2">
       </section>
@@ -168,21 +175,16 @@
                   <div class="footer-modern-contacts wow slideInUp">
                     <div class="unit unit-spacing-sm align-items-center">
                       <div class="unit-left"><span class="icon icon-24 mdi mdi-phone"></span></div>
-                      <div class="unit-body"><a class="phone" href="tel:#">Comunícate con nosotros</a></div>
+                      <div class="unit-body"><a class="text-a-white phone" href="tel:#">Comunícate con nosotros</a></div>
                     </div>
                   </div>
                   <div class="footer-modern-contacts wow slideInDown">
                     <div class="unit unit-spacing-sm align-items-center">
                       <div class="unit-left"><span class="icon mdi mdi-email"></span></div>
-                      <div class="unit-body"><a class="mail" href="mailto:qoybolivia@gmail.com">qoybolivia@gmail.com</a></div>
+                      <div class="unit-body"><a class="text-a-white mail" href="mailto:qoybolivia@gmail.com">qoybolivia@gmail.com</a></div>
                     </div>
                   </div>
-                  <div class="wow slideInRight">
-                    <ul class="list-inline footer-social-list footer-social-list-2 footer-social-list-3">
-                      <li><a class="icon mdi mdi-facebook" href="#"></a></li>
-                      <li><a class="icon mdi mdi-instagram" href="#"></a></li>
-                    </ul>
-                  </div>
+                  
                 </div>
               </div>
             </div>
@@ -191,10 +193,10 @@
         <div class="footer-modern-line-3">
           <div class="container">
             <div class="row row-10 justify-content-between">
-              <div class="col-md-6"><span>514 S. Magnolia St. Orlando, FL 32806</span></div>
+              <div class="col-md-6"><i class="fas fa-map-marker"></i>&nbsp;&nbsp;<span>Cochabamba - Bolivia</span></div>
               <div class="col-md-auto">
                 <!-- Rights-->
-                <p class="rights"><span>&copy;&nbsp;</span><span class="copyright-year"></span><span></span><span>.&nbsp;</span><span>All Rights Reserved.</span><span> Design&nbsp;by&nbsp;<a href="https://www.templatemonster.com">TemplateMonster</a></span></p>
+                <p class="rights"><span>&copy;&nbsp;</span><span class="copyright-year"></span><span></span><span>.&nbsp;</span><span>Todos los derechos reservados.</span></p>
               </div>
             </div>
           </div>
