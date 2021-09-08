@@ -53,11 +53,14 @@
                         </div>
                       </li>
                     </ul>
-                    <ul class="rd-navbar-contacts-2">
+                    <ul class="darkModeDiv">
                       <li>
                         <div class="unit unit-spacing-xs">
-                          <div class="unit-left"><i class="icon-y fas fa-info-circle fa-lg"></i></div>
-                          <div class="unit-body"><a class="text-theme" href="#">aaaa</a></div>
+                          <!-- dark mode-->
+                          <button class="darkModeSwitch" id="switch">
+                          <span><i class="fa fa-sun-o"></i></span>   
+                          <span><i class="fa fa-moon-o"></i></span>
+                          <!-- fin dark mode-->
                         </div>
                       </li>
                     </ul>
@@ -82,62 +85,7 @@
                   <div class="project-hamburger"><span class="project-hamburger-arrow"></span><span class="project-hamburger-arrow"></span><span class="project-hamburger-arrow"></span>
                   </div>
                 </div>-->
-                <div class="rd-navbar-project">
-                  <div class="rd-navbar-project-header">
-                    <h5 class="rd-navbar-project-title">Gallery</h5>
-                    <div class="rd-navbar-project-hamburger rd-navbar-project-hamburger-close" data-multitoggle=".rd-navbar-inner" data-multitoggle-blur=".rd-navbar-wrap" data-multitoggle-isolate="data-multitoggle-isolate">
-                      <div class="project-close"><span></span><span></span></div>
-                    </div>
-                  </div>
-                  <div class="rd-navbar-project-content rd-navbar-content">
-                    <div>
-                      <div class="row gutters-20" data-lightgallery="group">
-                        <div class="col-6">
-                          <!-- Thumbnail Creative-->
-                          <article class="thumbnail thumbnail-creative"><a href="images/project-1-1200x800-original.jpg" data-lightgallery="item">
-                              <div class="thumbnail-creative-figure"><img src="images/project-1-195x164.jpg" alt="" width="195" height="164"/>
-                              </div>
-                              <div class="thumbnail-creative-caption"><span class="icon thumbnail-creative-icon linearicons-magnifier"></span></div></a></article>
-                        </div>
-                        <div class="col-6">
-                          <!-- Thumbnail Creative-->
-                          <article class="thumbnail thumbnail-creative"><a href="images/project-2-1200x800-original.jpg" data-lightgallery="item">
-                              <div class="thumbnail-creative-figure"><img src="images/project-2-195x164.jpg" alt="" width="195" height="164"/>
-                              </div>
-                              <div class="thumbnail-creative-caption"><span class="icon thumbnail-creative-icon linearicons-magnifier"></span></div></a></article>
-                        </div>
-                        <div class="col-6">
-                          <!-- Thumbnail Creative-->
-                          <article class="thumbnail thumbnail-creative"><a href="images/project-3-1200x800-original.jpg" data-lightgallery="item">
-                              <div class="thumbnail-creative-figure"><img src="images/project-3-195x164.jpg" alt="" width="195" height="164"/>
-                              </div>
-                              <div class="thumbnail-creative-caption"><span class="icon thumbnail-creative-icon linearicons-magnifier"></span></div></a></article>
-                        </div>
-                        <div class="col-6">
-                          <!-- Thumbnail Creative-->
-                          <article class="thumbnail thumbnail-creative"><a href="images/project-4-1200x800-original.jpg" data-lightgallery="item">
-                              <div class="thumbnail-creative-figure"><img src="images/project-4-195x164.jpg" alt="" width="195" height="164"/>
-                              </div>
-                              <div class="thumbnail-creative-caption"><span class="icon thumbnail-creative-icon linearicons-magnifier"></span></div></a></article>
-                        </div>
-                        <div class="col-6">
-                          <!-- Thumbnail Creative-->
-                          <article class="thumbnail thumbnail-creative"><a href="images/project-5-1200x800-original.jpg" data-lightgallery="item">
-                              <div class="thumbnail-creative-figure"><img src="images/project-5-195x164.jpg" alt="" width="195" height="164"/>
-                              </div>
-                              <div class="thumbnail-creative-caption"><span class="icon thumbnail-creative-icon linearicons-magnifier"></span></div></a></article>
-                        </div>
-                        <div class="col-6">
-                          <!-- Thumbnail Creative-->
-                          <article class="thumbnail thumbnail-creative"><a href="images/project-6-1200x800-original.jpg" data-lightgallery="item">
-                              <div class="thumbnail-creative-figure"><img src="images/project-6-195x164.jpg" alt="" width="195" height="164"/>
-                              </div>
-                              <div class="thumbnail-creative-caption"><span class="icon thumbnail-creative-icon linearicons-magnifier"></span></div></a></article>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                
               </div>
             </div>
           </nav>
@@ -167,7 +115,7 @@
             <div class="row row-30 align-items-center">
               <div class="col-sm-6 col-md-7 col-lg-4 col-xl-4">
                 <div class="row row-30 align-items-center text-lg-center">
-                  <div class="col-md-7 col-xl-6"><a class="brand" href="index.html"><img src="{{ asset('images/logo-198x66.png') }}" alt="" width="198" height="66"/></a></div>
+                  <div class="col-md-7 col-xl-6"><a class="brand" href="index.html"><img src="{{ asset('images/LOGO.png') }}" alt="" width="198" height="66"/></a></div>
                 </div>
               </div>
               <div class="col-sm-6 col-md-12 col-lg-8 col-xl-8 oh-desktop">
