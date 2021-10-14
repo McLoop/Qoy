@@ -83,28 +83,7 @@
                   <div class="project-hamburger"><span class="project-hamburger-arrow"></span><span class="project-hamburger-arrow"></span><span class="project-hamburger-arrow"></span>
                   </div>
                 </div>
-                <div class="rd-navbar-project">
-                  <div class="rd-navbar-project-header">
-                    <h5 class="rd-navbar-project-title text-theme">Qoy Menu</h5>
-                    <div class="rd-navbar-project-hamburger rd-navbar-project-hamburger-close" data-multitoggle=".rd-navbar-inner" data-multitoggle-blur=".rd-navbar-wrap" data-multitoggle-isolate="data-multitoggle-isolate">
-                      <div class="project-close"><span></span><span></span></div>
-                    </div>
-                  </div>
-                  <div class="rd-navbar-project-content rd-navbar-content">
-                    <div>
-                      <div class="row gutters-20" data-lightgallery="group">
-                        <div class="col-12">
-                          <!-- Thumbnail Creative-->
-                          
-                        </div>
-                        <div class="col-6">
-                          <!-- Thumbnail Creative-->
-                          
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                
               </div>
             </div>
           </nav>

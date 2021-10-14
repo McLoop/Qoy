@@ -160,7 +160,7 @@
             <div class="row row-30 align-items-center">
               <div class="col-sm-6 col-md-7 col-lg-4 col-xl-4">
                 <div class="row row-30 align-items-center text-lg-center">
-                  <div class="col-md-7 col-xl-6"><a class="brand" href="index.html"><img src="{{ asset('images/LOGO.png') }}" alt="" width="198" height="66"/></a></div>
+                  <div class="col-md-7 col-xl-6"><a class="brand" href="#"><img src="{{ asset('images/LOGO.png') }}" alt="" width="198" height="66"/></a></div>
                 </div>
               </div>
               <div class="col-sm-6 col-md-12 col-lg-8 col-xl-8 oh-desktop">
