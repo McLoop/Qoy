@@ -13,7 +13,7 @@ class GoogleLoginController extends Controller
  
 public function redirect($provider)
 {
-    $drivers=['google'];
+    $drivers=['google','facebook'];
     if (in_array($provider, $drivers)) {
       return Socialite::driver($provider)->redirect();
     }else{

@@ -1,77 +1,35 @@
-@extends('layouts.app')
+@include('head.headsimple')
+<div class="container-content-page container-back">
+	
+	<div class="row">
+		<div class="col-sm-4 col-md-4"></div>
+		<div class="col-sm-4 col-md-4">
+			<h4 class="text-theme"><strong>Registrate en Qoy</strong></h4>
+			<br><br>
+			<form method="post" action="">
+			<label for="nom" class="text-label-left text-theme">Nombre Completo</label>	
+			<input type="text" name="nombre" id="nom" autocomplete="off" class="input-line-yellow form-control">
+			<label for="mail" class="text-label-left text-theme">Correo Electronico</label>
+			<input type="text" name="correo" id="mail" autocomplete="off" class="input-line-yellow form-control">
+			<input type="hidden" name="provider" value="qoy">
+			<!-- avatar -->
+			
+			<!-- avatar -->
+			<label for="pwd"  class="text-label-left text-theme">Contraseña</label>
+			<input type="password" name="password" id="pwd" autocomplete="off" class="input-line-yellow form-control">
+			<p class="text-theme">Al registrarte aceptas nuestros <a href="">terminos y condiciones.</a></p>
+			<button type="submit" class="form-control btn-primary-yellow">Registrarse</button>
+			</form>
+			<p class="text-center lead">- o -</p>
+            <a type="button" class="form-control btn-google-form text-a-black text-a-no-hover-black" href="{{ url('/auth/redirect/google') }}"><i class="text-red fas fa-google fa-1x"></i>&nbsp;&nbsp;&nbsp;Registrarse con Google</a>
+            <a type="button" class="form-control btn-facebook-form text-a-white text-a-no-hover-white" href="{{ url('/auth/redirect/facebook') }}"><i class="fas fa-facebook fa-1x"></i>&nbsp;Registrarse con Facebook</a><br>
+            <p class="text-theme">¿Aún no tienes una cuenta?</p><a href="{{ route('register')}}">Registrate Ahora</a>
+            <p class="p-bottom"></p>
+		</div>
+		<div class="col-sm-4 col-md-4"></div>
+	</div>
 
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
-
-                <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
-                        @csrf
-
-                        <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
-
-                                @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                            </div>
-                        </div>
-
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
+	
 </div>
-@endsection
+@include('footer.footer')
+

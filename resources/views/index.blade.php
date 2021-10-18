@@ -98,7 +98,7 @@
           <div class="col-sm-3 col-md-3"></div>
           <div class="cuadro-centro col-sm-4 col-md-6">
             <h3 class="text-primary-yellow"><strong>Bienvenido a Qoy</strong></h3><br>
-            <h5 class="text-theme">Qoy es un movimiento sin fines de lucro de personas que dan y reciben cosas gratis incentivando a reutilizar y donar articulos en buen estado, brinando ayuda a quien lo necesita y recibiendola de quien la ofrece. Ahora con una cuenta puedes compartir y recibir articulos de todo tipo totalmente gratis. <a href="#">Registrarse ahora.</a></h5>
+            <h5 class="text-theme">Qoy es un movimiento sin fines de lucro de personas que dan y reciben cosas gratis incentivando a reutilizar y donar articulos en buen estado, brinando ayuda a quien lo necesita y recibiendola de quien la ofrece. Ahora con una cuenta puedes compartir y recibir articulos de todo tipo totalmente gratis. <a href="{{ route('register')}}">Registrarse ahora.</a></h5>
           </div>
           <div class="col-sm-3 col-md-3"></div>
         </div>

@@ -26,9 +26,10 @@ Route::view('/register', 'register')->name('register');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-//google
+//login con google y facebook
 Route::get('/auth/redirect/{provider}', 'App\Http\Controllers\GoogleLoginController@redirect');
 Route::get('/callback/{provider}', 'App\Http\Controllers\GoogleLoginController@callback');
+//fin login 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

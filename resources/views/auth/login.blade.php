@@ -1,73 +1,30 @@
-@extends('layouts.app')
+@include('head.headsimple')
+<div class="container-content-page container-back">
+	
+	<div class="row">
+		<div class="col-sm-4 col-md-4"></div>
+		<div class="col-sm-4 col-md-4">
+			<h4 class="text-theme"><strong>Iniciar Sesión en Qoy</strong></h4>
+			<br><br>
+			<form method="post" action="">
+			<label for="mail" class="text-label-left text-theme">Correo Electronico</label>
+			<input type="text" name="correo" id="mail" autocomplete="off" class="input-line-yellow form-control">
+			<label for="pwd"  class="text-label-left text-theme">Contraseña</label>
+			<input type="password" name="password" id="pwd" autocomplete="off" class="input-line-yellow form-control">
+			<input type="checkbox" name="recordar" class="check-yellow" id="chbx">
+			<label for="chbx" class="text-theme">Mantener Sesión iniciada</label>
+			<button type="submit" class="form-control btn-primary-yellow">Entrar</button>
+			</form>
+			<p class="text-center lead">- o -</p>
+            <a type="button" class="form-control btn-google-form text-a-black text-a-no-hover-black" href="{{ url('/auth/redirect/google') }}"><i class="text-red fas fa-google fa-1x"></i>&nbsp;&nbsp;&nbsp;Iniciar sesión con Google</a>
+            <a type="button" class="form-control btn-facebook-form text-a-white text-a-no-hover-white" href="#"><i class="fas fa-facebook fa-1x"></i>&nbsp;Iniciar sesión con Facebook</a><br>
+            <p class="text-theme">¿Aún no tienes una cuenta?</p><a href="{{ route('register')}}">Registrate Ahora</a>
+            <p class="p-bottom"></p>
+		</div>
+		<div class="col-sm-4 col-md-4"></div>
+	</div>
 
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
-
-                <div class="card-body">
-                    <form method="POST" action="">
-                        @csrf
-
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <div class="col-md-6 offset-md-4">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-
-                                    <label class="form-check-label" for="remember">
-                                        {{ __('Remember Me') }}
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group row mb-0">
-                            <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Login') }}
-                                </button>
-
-                                @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('Forgot Your Password?') }}
-                                    </a>
-                                @endif
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
+	
 </div>
-@endsection
+@include('footer.footer')
+
