@@ -26,6 +26,7 @@
     </div>
     <div class="page">
       <!-- Page Header-->
+    @include('cookieConsent::index')
       <header class="section page-header">
         <!-- RD Navbar-->
         <div class="rd-navbar-wrap">
@@ -128,12 +129,13 @@
           <div class="row">
           <div class="col-sm-2 col-md-2"></div>
           <div class="col-sm-4 col-md-4">
-            <h6 class="text-theme">Unirte a Qoy es muy sencillo, solo debes registrarte y seleccionar tus interes, asi de sencillo!</h6><br>
-            <h6 class="text-primary-yellow">Necesitas una cuenta activa para publicar e interactuar en el sitio</h6>
-
+            <h6 class="text-theme">Unirte a Qoy es muy sencillo, registrate ahora con una de las opciones que ofrecemos, selecciona tus interes y listo!</h6><br>
+            <h6>¿Ya tienes una cuenta? Inicia Sesión ahora</h6><br>
+            <a type="button" class="form-control btn-line-yellow" href="{{ route('login') }}">Iniciar Sesión</a>
           </div>
           <div class="col-sm-4 col-md-4">
-            <a type="button" class="form-control btn-google text-a-black text-a-no-hover-black" href="#"><i class="text-red fas fa-google fa-1x"></i>&nbsp;&nbsp;&nbsp;Unirse con Google</a>
+            <p class="text-center lead">- o -</p>
+            <a type="button" class="form-control btn-google text-a-black text-a-no-hover-black" href="{{ url('/auth/redirect/google') }}"><i class="text-red fas fa-google fa-1x"></i>&nbsp;&nbsp;&nbsp;Unirse con Google</a>
             <a type="button" class="form-control btn-facebook text-a-white text-a-no-hover-white" href="#"><i class="fas fa-facebook fa-1x"></i>&nbsp;Unirse con Facebook</a>
             <a type="button" class="form-control btn-correo text-a-white text-a-no-hover-white" href="#"><i class="fas fa-envelope fa-1x"></i>&nbsp;&nbsp;&nbsp;Unirse con correo</a>
 
@@ -201,6 +203,7 @@
     <!-- Javascript-->
     <script src="{{ asset('js/core.min.js') }}"></script>
     <script src="{{ asset('js/script.js') }}"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <!-- coded by Himic-->
   </body>
 </html>

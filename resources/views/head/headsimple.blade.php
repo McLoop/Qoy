@@ -70,17 +70,12 @@
                   <div class="rd-navbar-main">
                     <!-- RD Navbar Nav-->
                     <ul class="rd-navbar-nav">
-                      <li class="rd-nav-item active"><a class="rd-nav-link text-theme text-a-no-hover" href="#">¿Quienes somos?</a>
+                      <li class="rd-nav-item"><a class="rd-nav-link text-theme text-a-no-hover" href="{{ route('login')}}">Inicia Sesión</a>
                       </li>
-                      <li class="rd-nav-item"><a class="rd-nav-link text-theme text-a-no-hover" href="#">¿Qué hacemos?</a>
-                      </li>
-                      <li class="rd-nav-item"><a class="rd-nav-link text-theme text-a-no-hover" href="#">Unete</a>
+                      <li class="rd-nav-item"><a class="rd-nav-link text-theme text-a-no-hover" href="{{ route('register')}}">Registrarse</a>
                       </li>
                     </ul>
-                  </div>
-                </div>
-                <div class="rd-navbar-project-hamburger rd-navbar-project-hamburger-open rd-navbar-fixed-element-1" data-multitoggle=".rd-navbar-inner" data-multitoggle-blur=".rd-navbar-wrap" data-multitoggle-isolate="data-multitoggle-isolate">
-                  <div class="project-hamburger"><span class="project-hamburger-arrow"></span><span class="project-hamburger-arrow"></span><span class="project-hamburger-arrow"></span>
+                    
                   </div>
                 </div>
                 

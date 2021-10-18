@@ -53,6 +53,8 @@
     <!-- Javascript-->
     <script src="{{ asset('js/core.min.js') }}"></script>
     <script src="{{ asset('js/script.js') }}"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    @include('sweetalert::alert')
     <!-- coded by Himic-->
   </body>
 </html>

@@ -20,4 +20,15 @@ Route::get('/', function () {
 });
 
 Route::view('/inicio', 'feed')->name('feed');
+Route::view('/login', 'login')->name('login');
+Route::view('/register', 'register')->name('register');
 
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+//google
+Route::get('/auth/redirect/{provider}', 'App\Http\Controllers\GoogleLoginController@redirect');
+Route::get('/callback/{provider}', 'App\Http\Controllers\GoogleLoginController@callback');
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

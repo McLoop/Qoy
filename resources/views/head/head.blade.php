@@ -45,10 +45,19 @@
                   <div class="rd-navbar-aside">
                     <ul class="rd-navbar-contacts-2">
                       <li>
-                        <div class="unit unit-spacing-xs">
-                          <div class="unit-left"><i class="icon-y fas fa-info-circle fa-lg"></i></div>
-                          <div class="unit-body"><a class="text-theme" href="#">El sitio donde puede encontrar todo ¡GRATIS!</a></div>
-                        </div>
+                        <!--guest-->
+                         @guest
+                            <div class="unit unit-spacing-xs">
+                              <div class="unit-left"><i class="icon-y fas fa-info-circle fa-lg"></i></div>
+                              <div class="unit-body"><a class="text-theme" href="#">El sitio donde puede encontrar todo ¡GRATIS!</a></div>
+                            </div>
+                        @else
+                            <div class="unit unit-spacing-xs">
+                              <img class="img-circle" src="{{auth()->user()->avatar}}" alt="" width="30" height="30">
+                              <div class="unit-body"><a class="text-theme" href="#">{{auth()->user()->name}}</a></div>
+                            </div>
+                        @endguest
+                        <!-- guest -->
                       </li>
                     </ul>
                     <ul class="darkModeDiv">
