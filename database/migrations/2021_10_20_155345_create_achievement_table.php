@@ -15,7 +15,7 @@ class CreateAchievementTable extends Migration
     {
         Schema::create('achievement', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
+            $table->string('achievement_name');
             $table->tinyInteger('achievement_status')->default('0');
             $table->timestamps();
         });

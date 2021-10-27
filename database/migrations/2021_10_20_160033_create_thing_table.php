@@ -15,7 +15,7 @@ class CreateThingTable extends Migration
     {
         Schema::create('thing', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
+            $table->string('thing_name');
             $table->string('description');
             $table->string('photo');
             //regionid

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddForeignToThingTable extends Migration
+class AddForeignToUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class AddForeignToThingTable extends Migration
      */
     public function up()
     {
-        Schema::table('thing', function (Blueprint $table) {
-            $table->integer('post_id')->after('thing_state')->unsigned();
-            $table->foreign('post_id')->references('id')->on('post');
+        Schema::table('users', function (Blueprint $table) {
+            $table->integer('user_ubication')->after('password')->unsigned()->nullable();
+            $table->foreign('user_ubication')->references('id')->on('ubication');
         });
     }
 
@@ -26,7 +26,7 @@ class AddForeignToThingTable extends Migration
      */
     public function down()
     {
-        Schema::table('thing', function (Blueprint $table) {
+        Schema::table('users', function (Blueprint $table) {
             //
         });
     }

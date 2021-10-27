@@ -16,8 +16,14 @@
     <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
     <link rel="stylesheet" href="{{ asset('css/fonts.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <!-- wea -->
+
+    <!-- fin wea-->
+    
+
   </head>
   <body class="">
+    
     <div class="lds-ring">
       <div></div>
       <div></div>

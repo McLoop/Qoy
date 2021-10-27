@@ -51,10 +51,16 @@
     <!-- Global Mailform Output-->
     <div class="snackbars" id="form-output-global"></div>
     <!-- Javascript-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="{{ asset('/sweetalert/dist/sweetalert.min.js')}}"></script>
     <script src="{{ asset('js/core.min.js') }}"></script>
     <script src="{{ asset('js/script.js') }}"></script>
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="{{ asset('js/images_qoy.js') }}"></script>
+    <script src="/assets/bootstrap-fileinput/js/fileinput.min.js"></script>
+    <script src="/assets/bootstrap-fileinput/js/locales/es.js"></script>
+    <script src="/assets/bootstrap-fileinput/themes/fa/theme.min.js"></script>
     @include('sweetalert::alert')
+    
     <!-- coded by Himic-->
   </body>
 </html>

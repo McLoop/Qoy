@@ -5,10 +5,13 @@
 		<div class="col-sm-4 col-md-4"></div>
 		<div class="col-sm-4 col-md-4">
 			<h4 class="text-theme"><strong>Iniciar Sesión en Qoy</strong></h4>
-			<br><br>
-			<form method="post" action="">
+			<br>
+			@include('partials.message')
+			<br>
+			<form method="post" action="{{ route('login_qoy')}}">
+			@csrf
 			<label for="mail" class="text-label-left text-theme">Correo Electronico</label>
-			<input type="text" name="correo" id="mail" autocomplete="off" class="input-line-yellow form-control">
+			<input type="text" name="usuario" id="mail" autocomplete="off" class="input-line-yellow form-control">
 			<label for="pwd"  class="text-label-left text-theme">Contraseña</label>
 			<input type="password" name="password" id="pwd" autocomplete="off" class="input-line-yellow form-control">
 			<input type="checkbox" name="recordar" class="check-yellow" id="chbx">

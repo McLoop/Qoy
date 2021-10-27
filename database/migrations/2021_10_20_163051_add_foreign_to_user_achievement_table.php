@@ -16,8 +16,8 @@ class AddForeignToUserAchievementTable extends Migration
         Schema::table('user_achievement', function (Blueprint $table) {
             $table->integer('user_id')->after('id')->unsigned();
             $table->integer('achievement_id')->after('user_id')->unsigned();
-$table->foreign('user_id')->references('id')->on('users');
-$table->foreign('achievement_id')->references('id')->on('achievement');
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('achievement_id')->references('id')->on('achievement');
         });
     }
 

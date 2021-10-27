@@ -22,12 +22,17 @@ Route::get('/', function () {
 Route::view('/qoy', 'index')->name('index');
 
 //login y regstro views
-Route::view('/inicio', 'feed')->name('feed');
 Route::view('/login', 'login')->name('login');
 Route::view('/register', 'register')->name('register');
 
+//perfil y usuarios
+Route::get('/perfil/inicio', 'App\Http\Controllers\UserController@setPerfil')->name('editar_perfil');
+Route::post('/perfil/inicio', 'App\Http\Controllers\UserController@store')->name('usuario_register');
+Route::post('/login/qoy', 'App\Http\Controllers\UserController@loginNormal')->name('login_qoy');
 
-//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+//feed
+Route::get('/inicio', 'App\Http\Controllers\FeedController@index')->name('feed');
 
 //login con google y facebook
 Route::get('/auth/redirect/{provider}', 'App\Http\Controllers\GoogleLoginController@redirect');
@@ -35,4 +40,3 @@ Route::get('/callback/{provider}', 'App\Http\Controllers\GoogleLoginController@c
 Route::get('/logout', 'App\Http\Controllers\GoogleLoginController@logout')->name('logout');
 //fin login 
 
-//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

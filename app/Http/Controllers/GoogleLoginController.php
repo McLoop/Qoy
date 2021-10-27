@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Validator,Redirect,Response,File;
 use Socialite;
 use App\Models\User;
+use RealRashid\SweetAlert\Facades\Alert;
 
  
 class GoogleLoginController extends Controller
@@ -31,8 +32,8 @@ public function callback($provider)
  
     auth()->login($user);
     
-    if (auth()->user()->user_type=='0') {
-        return redirect()->route('feed');//perfil
+    if (auth()->user()->user_state=='0') {
+        return redirect()->route('editar_perfil');//perfil
     }
     else{
         return redirect()->route('feed');
@@ -60,7 +61,7 @@ function createUser($getInfo,$provider){
 public function logout()
 {
     auth()->logout();
-    alert()->success('Vuelve Pronto', 'Cerraste sesión');
+    alert()->success('Fin','cerras');
     return redirect()->to('login');
 }
 

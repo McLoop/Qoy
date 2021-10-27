@@ -29,7 +29,12 @@
                             </div>
                           @else
                             <div class="unit unit-spacing-xs">
+                              @if(auth()->user()->user_type==1)
+                              <img class="img-circle" src="{{Storage::url(auth()->user()->avatar)}}" alt="" width="25" height="25">
+                              @else
                               <img class="img-circle" src="{{auth()->user()->avatar}}" alt="" width="25" height="25">
+                              @endif
+                              
                               <div class="unit-body"><a class="text-theme" href="#">{{auth()->user()->name}}</a></div>
                             </div>
                           @endguest
