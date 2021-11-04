@@ -13,7 +13,17 @@ class Lista {
 		0=>'Incompleta',
 		1=>'Activa',
         2=>'Inactiva'
+	);
 
+	const REGION = array(
+		1=>'Arani',
+        2=>'Tarata'
+	);
+
+	const ZONA = array(
+		1=>'Central',
+		2=>'Norte',
+        3=>'Sud'
 	);
 
 }

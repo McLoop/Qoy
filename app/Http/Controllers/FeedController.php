@@ -13,7 +13,7 @@ class FeedController extends Controller
      */
     public function index()
     {
-        toast('Loggeo con exito','success')->position('top-end');
+        //toast('Loggeo con exito','success')->position('top-end');
         return view('feed');
     }
 

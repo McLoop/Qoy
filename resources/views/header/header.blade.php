@@ -35,7 +35,7 @@
                               <img class="img-circle" src="{{auth()->user()->avatar}}" alt="" width="25" height="25">
                               @endif
                               
-                              <div class="unit-body"><a class="text-theme" href="#">{{auth()->user()->name}}</a></div>
+                              <div class="unit-body"><a class="text-theme" href="{{route('editar_perfil')}}">{{auth()->user()->name}}</a></div>
                             </div>
                           @endguest
                         <!-- guest -->

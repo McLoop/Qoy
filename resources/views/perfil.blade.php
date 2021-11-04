@@ -57,7 +57,11 @@
         <div class="datos-row">
         	<i class="icon-perfil fas fa-info fa-lg"></i>
         	<h6 class="datos-perfil">Cuenta {{$user_status[auth()->user()->user_state]}}</h6>
-        </div><br>
+        </div>
+        <div class="datos-row">
+        <a type="button" href="#" class="form-control btn-primary-yellow text-a-no-hover-black"><i class="fas fa-eye fa-lg"></i>&nbsp;Ver como</a>
+        </div>
+        <br>
         <h6>Insignias de usuario:</h6>
         <br><br>
 		<h6 class="message_h">Este usuario aún no tiene insignias.</h6>
@@ -65,7 +69,34 @@
 
 	</div>
 	<div class="col-sm-4 col-md-4">
-		
+	       @if(auth()->user()->user_state==0)	
+               <h6>Agrega estos datos para completar tu perfil</h6>
+                <h6 class="message_h">Tu ubicación o zona de residencia sirve para poder filtrar las publicaciones cercanas a ti, no podras solicitar objetos si no la defines.</h6>
+               @else
+               <h6>Editar datos de perfil</h6>
+                <h6 class="message_h">Puedes cambiar los datos de:</h6>
+               @endif
+               <br>
+               <form method="post">
+                @csrf
+                <div class="select-qoy">
+                    <label for="rg" class="text-label-left text-theme">Selecciona tu lugar de residencia</label>
+                    <select id="rd">
+                      @forelse($ubicacion as $ubication)
+                      <option value="{{$ubication->id}}">{{$regiones[$ubication->region_id]}} zona {{ $zonas[$ubication->zone_id]}}</option>
+                      @empty
+                      <option value="0">No hay regiones para mostrar</option>
+                      @endforelse
+                    </select>
+                </div>
+                <h6 class="message_h">Estos datos no son obligatorios, pero pueden ser clave al momento de un solicitar un objeto, dado que garantizan la seguridad entre usuarios dentro de QOY.</h6>
+                <label for="ci" class="text-label-left text-theme">Añade un carnet de identificación</label>
+                <input type="number" min="1111111" name="carnet" id="ci" class="input-line-yellow form-control">
+                <label for="dir" class="text-label-left text-theme">Añade una dirección</label>
+                <input type="text" name="direccion" id="dir" class="input-line-yellow form-control" placeholder="Av. principal entre calle 1 y calle 2">
+                <button type="submit" class="form-control btn-primary-yellow">Guardar datos</button>
+                </form>
+                <br><br>
 	</div>
 	<div class="col-sm-2 col-md-2"></div>
 </div>

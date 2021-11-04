@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\Lista;
 use Illuminate\Support\Facades\Auth;
 use App\models\User;
+use App\models\Ubication;
 
 
 class UserController extends Controller
@@ -49,11 +50,18 @@ class UserController extends Controller
     public function setPerfil()
     {
         //sacamos las ubicaiones de bdd
-        //$zona = Zona::where('idZona', auth()->user()->idZona)->get();
-        toast('Primero debes configurar tu perfil','info');
+        $ubicacion = Ubication::where('ubication_status', 1)->get();
+        if (auth()->user()->user_state==0) {
+            toast('Primero debes configurar tu perfil','info');
+        } else {
+            
+        }
+        
         $user_types = Lista::USER_TYPES;
         $user_status = Lista::USER_STATUS;
-        return view('perfil', compact('user_types', 'user_status'))->with('info', 'Configura tu zona de residencia.');
+        $regiones = Lista::REGION;
+        $zonas = Lista::ZONA;
+        return view('perfil', compact('user_types', 'user_status', 'ubicacion', 'regiones', 'zonas'))->with('info', 'Configura tu zona de residencia.');
     }
 
 
