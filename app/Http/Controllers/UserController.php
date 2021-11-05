@@ -59,11 +59,12 @@ class UserController extends Controller
         }
         $user_types = Lista::USER_TYPES;
         $user_types_message = Lista::USER_TYPES_MESSAGE;
+        $user_message = Lista::USER_MESSAGE;
         $user_status = Lista::USER_STATUS;
         $regiones = Lista::REGION;
         $user_ubication = Lista::UBICATION;
         $zonas = Lista::ZONA;
-        return view('perfil', compact('user_types', 'user_status','ubicacion', 'regiones', 'zonas', 'user_ubication','user_types_message'))->with('info', 'Configura tu zona de residencia.');
+        return view('perfil', compact('user_types', 'user_status','ubicacion', 'regiones', 'zonas', 'user_ubication','user_types_message', 'user_message'))->with('info', 'Configura tu zona de residencia.');
     }
 
     /**
@@ -157,7 +158,6 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        $ubicacion = Ubication::where('ubication_status', 1)->get();
         $user_types = Lista::USER_TYPES;
         $user_status = Lista::USER_STATUS;
         $user_message = Lista::USER_MESSAGE;
@@ -165,9 +165,10 @@ class UserController extends Controller
         $user_ubication = Lista::UBICATION;
         $zonas = Lista::ZONA;
         $user = User::where('id', $id)->get();
+        $user=$user->get(0);
         if($user!=null)
         {
-        return view('perfil_usuario', compact('user_types', 'user_status', 'user_message', 'ubicacion', 'regiones', 'zonas','user', 'user_ubication'));
+        return view('perfil_usuario', compact('user_types', 'user_status', 'user_message', 'user', 'regiones', 'zonas','user', 'user_ubication'));
 
         }
         

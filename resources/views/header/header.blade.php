@@ -85,7 +85,7 @@
                           <!-- Thumbnail Creative-->
                           <ul>
                             <li class="rd-nav-item li-menu-der"><a hidden="true" href="#">Opciones</a></li>
-                            <li class="rd-nav-item li-menu-der"><a href="#">Tu perfil</a></li>
+                            <li class="rd-nav-item li-menu-der"><a href="{{route('editar_perfil')}}">Tu perfil</a></li>
                             <li class="rd-nav-item li-menu-der"><a href="#">Tus publicaciones</a></li>
                             <li class="rd-nav-item li-menu-der"><a href="#">Solicitudes enviadas</a></li>
                             <li class="rd-nav-item li-menu-der"><a href="#">Configuración</a></li>

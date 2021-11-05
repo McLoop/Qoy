@@ -52,10 +52,14 @@
     <div class="snackbars" id="form-output-global"></div>
     <!-- Javascript-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/StephanWagner/jBox@v1.3.3/dist/jBox.all.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/gh/StephanWagner/jBox@v1.3.3/dist/jBox.all.min.css" rel="stylesheet">
     <script src="{{ asset('/sweetalert/dist/sweetalert.min.js')}}"></script>
     <script src="{{ asset('js/core.min.js') }}"></script>
     <script src="{{ asset('js/script.js') }}"></script>
     <script src="{{ asset('js/images_qoy.js') }}"></script>
+    <script src="{{ asset('js/jbox.js') }}"></script>
     <script src="/assets/bootstrap-fileinput/js/fileinput.min.js"></script>
     <script src="/assets/bootstrap-fileinput/js/locales/es.js"></script>
     <script src="/assets/bootstrap-fileinput/themes/fa/theme.min.js"></script>
