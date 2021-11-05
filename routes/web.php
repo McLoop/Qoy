@@ -27,7 +27,9 @@ Route::view('/register', 'register')->name('register');
 
 //perfil y usuarios
 Route::get('/perfil/inicio', 'App\Http\Controllers\UserController@setPerfil')->name('editar_perfil');
+Route::get('/perfil/usuario/{user_id}', 'App\Http\Controllers\UserController@show')->name('user_perfil');
 Route::post('/perfil/inicio', 'App\Http\Controllers\UserController@store')->name('usuario_register');
+Route::post('/perfil/ubication', 'App\Http\Controllers\UserController@setUbication')->name('user_ubication');
 Route::post('/login/qoy', 'App\Http\Controllers\UserController@loginNormal')->name('login_qoy');
 
 

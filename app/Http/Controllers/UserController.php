@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\Lista;
 use Illuminate\Support\Facades\Auth;
 use App\models\User;
+use Carbon\Carbon;
 use App\models\Ubication;
 
 
@@ -56,14 +57,33 @@ class UserController extends Controller
         } else {
             
         }
-        
         $user_types = Lista::USER_TYPES;
+        $user_types_message = Lista::USER_TYPES_MESSAGE;
         $user_status = Lista::USER_STATUS;
         $regiones = Lista::REGION;
+        $user_ubication = Lista::UBICATION;
         $zonas = Lista::ZONA;
-        return view('perfil', compact('user_types', 'user_status', 'ubicacion', 'regiones', 'zonas'))->with('info', 'Configura tu zona de residencia.');
+        return view('perfil', compact('user_types', 'user_status','ubicacion', 'regiones', 'zonas', 'user_ubication','user_types_message'))->with('info', 'Configura tu zona de residencia.');
     }
 
+    /**
+     * Configura la ubicacion un perfil..
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function setUbication(Request $request)
+    {
+        //si el usuario no tiene ubicacion la creamos
+        if (auth()->user()->user_state==0) {
+         User::where('id', auth()->user()->id)->update(['user_ubication'=>request('ubication')]);
+         User::where('id', auth()->user()->id)->update(['user_state'=>1]);
+         User::where('id', auth()->user()->id)->update(['user_type'=>1]);
+        } else {
+        //si el usuario ya tiene ubicacion la actualizamos
+         User::where('id', auth()->user()->id)->update(['user_ubication'=>request('ubication')]);
+        }
+        return redirect()->route('editar_perfil')->with('info', 'Ubicación agregada correctamente');
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -137,7 +157,20 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        $ubicacion = Ubication::where('ubication_status', 1)->get();
+        $user_types = Lista::USER_TYPES;
+        $user_status = Lista::USER_STATUS;
+        $user_message = Lista::USER_MESSAGE;
+        $regiones = Lista::REGION;
+        $user_ubication = Lista::UBICATION;
+        $zonas = Lista::ZONA;
+        $user = User::where('id', $id)->get();
+        if($user!=null)
+        {
+        return view('perfil_usuario', compact('user_types', 'user_status', 'user_message', 'ubicacion', 'regiones', 'zonas','user', 'user_ubication'));
+
+        }
+        
     }
 
     /**
