@@ -26,7 +26,7 @@
     </div>
     <div class="page">
       <!-- Page Header-->
-    @include('cookieConsent::index')
+
       <header class="section page-header">
         <!-- RD Navbar-->
         <div class="rd-navbar-wrap">
@@ -52,6 +52,7 @@
                         </div>
                       </li>
                     </ul>
+                    @isset($_COOKIE['laravel_cookie_consent'])
                     <ul class="darkModeDiv">
                       <li>
                         <div class="unit unit-spacing-xs">
@@ -63,6 +64,19 @@
                         </div>
                       </li>
                     </ul>
+                    @else
+                    <!-- No mostramos el switch de darkmode-->
+                    <ul class="darkModeDiv">
+                      <li>
+                        <div class="unit unit-spacing-xs">
+                          <!-- dark mode-->
+                          <button class="darkModeSwitch" hidden="true" id="switch">
+                          <!-- fin dark mode-->
+                        </div>
+                      </li>
+                    </ul>
+                    @endisset
+                    
                     <ul class="list-share-2">
                       <li><a id="btn-rrss" class="icon mdi mdi-facebook" href="#"></a></li>
                       <li><a id="btn-rrss" class="icon mdi mdi-instagram" href="#"></a></li>
@@ -90,7 +104,8 @@
           </nav>
         </div>
       </header>
-
+    @include('cookieConsent::index')
+        
       <!-- inicio body -->
       <section id="info1" class="set-bg">
       <div class="container-full">  

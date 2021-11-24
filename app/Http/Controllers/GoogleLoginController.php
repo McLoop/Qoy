@@ -8,6 +8,7 @@ use Validator,Redirect,Response,File;
 use Socialite;
 use App\Models\User;
 use RealRashid\SweetAlert\Facades\Alert;
+use Cookie;
 
  
 class GoogleLoginController extends Controller
@@ -30,8 +31,8 @@ public function callback($provider)
      
     $user = $this->createUser($getInfo,$provider);
  
-    auth()->login($user);
-    
+    auth()->login($user, true);
+    //Cookie::queue('darkMode', 'white', 60);
     if (auth()->user()->user_state=='0') {
         return redirect()->route('editar_perfil');//perfil
     }

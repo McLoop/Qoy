@@ -4,7 +4,7 @@
 <div class="row">
 	<div class="col-sm-2 col-md-2"></div>
 	<div class="col-sm-4 col-md-4">
-		<h5>Perfil</h5>
+		<h5></h5>
 		<h6 class="message_h">Estos datos son publicos y pueden verlo las personas que entren e tu perfil.</h6>
 		<!-- foto y nombre -->
                 @if(auth()->user()->provider=='qoy')
