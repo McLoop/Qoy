@@ -1,12 +1,89 @@
 "use strict";
+//INTEREST
+var contadorInteres = 0;
+function agregarInteres(id){
+	if ( document.getElementById(id).classList.contains('bg-success') )
+	{
+		document.getElementById(id).classList.remove('bg-success');
+		document.getElementById('B'+id).classList.remove('icon-yellowicon-white');
+		document.getElementById('B'+id).classList.remove('fa-times');
+		document.getElementById('B'+id).classList.add('icon-yellow');
+		document.getElementById('B'+id).classList.add('fa-plus');
+		document.getElementById('primario'+contadorInteres).value=id;
+		contadorInteres--;
+	}
+	else if(contadorInteres<2){
+		document.getElementById(id).classList.add('bg-success');
+		document.getElementById('B'+id).classList.remove('icon-yellow');
+		document.getElementById('B'+id).classList.remove('fa-plus');
+		document.getElementById('B'+id).classList.add('icon-white');
+		document.getElementById('B'+id).classList.add('fa-times');
+		contadorInteres++;
+		document.getElementById('primario'+contadorInteres).value=id;
+	}
+	else{
+		Swal.fire('Ya seleccionaste 2 intereses.');
+	}
+
+	if(contadorInteres==2)
+	{
+	document.getElementById('interestButton').disabled=false;
+	}
+}
+
+//cookies darkMode
+function setCookie(name,value,days) {
+    var expires = "";
+    if (days) {
+        var date = new Date();
+        date.setTime(date.getTime() + (days*24*60*60*1000));
+        expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+}
+function getCookie(name) {
+    var nameEQ = name + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0;i < ca.length;i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1,c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+    }
+    return null;
+}
+
+var modo = getCookie("dark_mode");
+
+if (modo == null) {
+    setCookie("dark_mode",0,30);
+}
+else {
+    // do cookie exists stuff
+}
+//set "user_email" cookie, expires in 30 days
+//var userEmail=getCookie("user_email");//"bobthegreat@gmail.com"
 
 //dark mode
 
 const switchButton = document.getElementById('switch');
- 
+console.log(modo);
+if (modo) 
+{
+  switchButton.classList.toggle('active');//toggle the HTML button with the id='switch' with the class 'active'
+}
+
 switchButton.addEventListener('click', () => {
     document.body.classList.toggle('dark'); //toggle the HTML body the class 'dark'
     switchButton.classList.toggle('active');//toggle the HTML button with the id='switch' with the class 'active'
+    if (modo) 
+    {
+    	setCookie("dark_mode",0,30);
+    }
+    else
+    {
+    	setCookie("dark_mode",1,30);
+    	switchButton.value="moon";
+    }
 });
 
 //fin dark mode
