@@ -27,10 +27,13 @@ Route::view('/register', 'register')->name('register')->middleware('guest');
 
 //perfil y usuarios
 Route::get('/perfil/inicio', 'App\Http\Controllers\UserController@setPerfil')->name('editar_perfil')->middleware('auth');
+Route::get('/perfil/intereses/{user_id}/{type}', 'App\Http\Controllers\UserController@setPerfilInterest')->name('editar_intereses')->middleware('auth');
 Route::get('/perfil/usuario/{user_id}', 'App\Http\Controllers\UserController@show')->name('user_perfil')->middleware('auth');
 Route::post('/perfil/inicio', 'App\Http\Controllers\UserController@store')->name('usuario_register');
 Route::post('/perfil/ubication', 'App\Http\Controllers\UserController@setUbication')->name('user_ubication');
 Route::post('/login/qoy', 'App\Http\Controllers\UserController@loginNormal')->name('login_qoy');
+Route::post('/perfil/intereses_guardar/', 'App\Http\Controllers\UserController@setPerfilPrimaryInterest')->name('guardar_intereses_primario')->middleware('auth');
+Route::post('/perfil/intereses_guardar/secundario', 'App\Http\Controllers\UserController@setPerfilSecondaryInterest')->name('guardar_intereses_secundario')->middleware('auth');
 
 
 //feed
