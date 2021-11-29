@@ -17,7 +17,15 @@
     <link rel="stylesheet" href="{{ asset('css/fonts.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
   </head>
-  <body class="">
+  @if(isset($_COOKIE["dark_mode"]))
+    @if($_COOKIE["dark_mode"])
+      <body class="dark">
+    @else
+      <body class="">
+    @endif
+  @else
+    <body class="">
+  @endif
     <div class="lds-ring">
       <div></div>
       <div></div>

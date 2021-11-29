@@ -1,5 +1,7 @@
 @include('head.head')
-<div class="container">
+@include('partials.message')
+
+<div class="container-content-page container-back">
 
 </div>
 

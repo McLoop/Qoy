@@ -6,7 +6,6 @@
 		<div class="col-sm-4 col-md-4">
 			<h4 class="text-theme"><strong>Iniciar Sesión en Qoy</strong></h4>
 			<br>
-			@include('partials.message')
 			<br>
 			<form method="post" action="{{ route('login_qoy')}}">
 			@csrf

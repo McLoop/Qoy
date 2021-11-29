@@ -31,7 +31,7 @@
                       <li>
                         <div class="unit unit-spacing-xs">
                           <!-- dark mode-->
-                          <button class="darkModeSwitch" id="switch">
+                          <button class="darkModeSwitch" id="switch" value="sun">
                           <span><i class="fa fa-sun-o"></i></span>   
                           <span><i class="fa fa-moon-o"></i></span>
                           <!-- fin dark mode-->
