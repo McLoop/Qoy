@@ -8,8 +8,10 @@ use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\Lista;
 use Illuminate\Support\Facades\Auth;
 use App\models\User;
-use Carbon\Carbon;
 use App\models\Ubication;
+use App\models\Interest;
+use App\models\Category;
+use Carbon\Carbon;
 
 
 class UserController extends Controller
@@ -65,6 +67,76 @@ class UserController extends Controller
         $user_ubication = Lista::UBICATION;
         $zonas = Lista::ZONA;
         return view('perfil', compact('user_types', 'user_status','ubicacion', 'regiones', 'zonas', 'user_ubication','user_types_message', 'user_message'))->with('info', 'Configura tu zona de residencia.');
+    }
+
+    /**
+     * Configura los intereses de un perfil.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function setPerfilInterest($user_id, $type)
+    {
+        //sacamos las ubicaiones de bdd
+        $category = Category::where('category_status', 1)->get();
+        if (auth()->user()->user_state==1) {
+            alert('Selecciona tus intereses','Debes elegir 2 intereses primario y 2 secundarios como máximo.','info');
+        } else {
+            
+        }
+        $interest = Interest::where('user_id', $user_id)->get();
+        if ($type=='primarios') {
+            return view('interest', compact('interest', 'category'));
+        } else if ($type=='secundarios'){
+            return view('interest_secundario', compact('interest', 'category'));
+        }
+        
+    }
+
+    /**
+     * Guarda los intereses primarios de un perfil.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function setPerfilPrimaryInterest()
+    {
+        //sacamos las ubicaiones de bdd
+        Interest::create([
+                'user_id'=>request('user'),
+                'category_id'=>request('primario1'),
+                'interest_type'=>1,
+                'interest_status'=>1
+            ]);
+        Interest::create([
+                'user_id'=>request('user'),
+                'category_id'=>request('primario2'),
+                'interest_type'=>1,
+                'interest_status'=>1
+            ]);
+        return redirect()->route('editar_perfil');
+    }
+
+    /**
+     * Guarda los intereses secundarios de un perfil.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function setPerfilSecondaryInterest()
+    {
+        //sacamos las ubicaiones de bdd
+        Interest::create([
+                'user_id'=>request('user'),
+                'category_id'=>request('secundario1'),
+                'interest_type'=>2,
+                'interest_status'=>1
+            ]);
+        Interest::create([
+                'user_id'=>request('user'),
+                'category_id'=>request('secundario2'),
+                'interest_type'=>2,
+                'interest_status'=>1
+            ]);
+        User::where('id', request('user'))->update(['user_state'=>2]);
+        return redirect()->route('editar_perfil');
     }
 
     /**

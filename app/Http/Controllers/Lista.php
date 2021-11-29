@@ -17,17 +17,20 @@ class Lista {
 
 	const USER_STATUS = array(
 		0=>'Incompleta', // Usuario sin perfil terminado
-		1=>'Activa',     // Usuario con perfil terminado
-                2=>'Inactiva',   // Eliminacion logica de usuario
-                3=>'Seguro',	 // Usuario con datos personales
-                4=>'Inhabilitado'// Usuario inhabilitado por faltas
+		1=>'Casi completa',// Usuario con perfil en proceso
+                2=>'Activa',     // Usuario con perfil terminado
+                3=>'Inactiva',   // Eliminacion logica de usuario
+                4=>'Seguro',	 // Usuario con datos personales
+                5=>'Inhabilitado'// Usuario inhabilitado por faltas
 	);
 
 	const USER_MESSAGE = array(
 		0=>'Esta cuenta esta recien creada, el perfil no termino de configurarse correctamente.', // Usuario sin perfil terminado
-		1=>'Esta cuenta esta actualmente activa, puede publicar y solicitar propiedad en Qoy.',     // Usuario con perfil terminado
-                2=>'Esta cuenta esta actualmente inactiva por peticion del usuario.',   // Eliminacion logica de usuario
-                3=>'Este cuenta fue deshabilitada por ir en contra de los terminos y condiciones de Qoy.'		 // Usuario con datos personales
+                1=>'Esta cuenta esta proceso de completar su perfil.',     // Usuario con perfil terminado
+                2=>'Esta cuenta esta actualmente activa, puede publicar y solicitar propiedad en Qoy.',     // Usuario con perfil terminado
+                3=>'Esta cuenta esta actualmente inactiva por peticion del usuario.',   // Eliminacion logica de usuario
+                4=>'Esta cuenta esta es segura dado que Qoy tiene los datos personales de este usuario.',   // Eliminacion logica de usuario
+                5=>'Este cuenta fue deshabilitada por ir en contra de los terminos y condiciones de Qoy.'		 // Usuario con datos personales
 	);
 
 	const REGION = array(
