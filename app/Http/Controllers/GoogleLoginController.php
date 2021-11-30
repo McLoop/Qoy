@@ -37,6 +37,7 @@ public function callback($provider)
         return redirect()->route('editar_perfil');//perfil
     }
     else{
+        toast('Loggeo con exito','success')->position('top-end');
         return redirect()->route('feed');
 
     }

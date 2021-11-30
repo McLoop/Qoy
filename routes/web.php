@@ -39,6 +39,17 @@ Route::post('/perfil/intereses_guardar/secundario', 'App\Http\Controllers\UserCo
 //feed
 Route::get('/inicio', 'App\Http\Controllers\FeedController@index')->name('feed')->middleware('auth');
 
+//post
+Route::get('/post/nuevo', 'App\Http\Controllers\PostController@create')->name('nuevo_post')->middleware('auth');
+Route::get('/post/cancelar/{post_id}', 'App\Http\Controllers\ThingController@destroy')->name('cancelar_post')->middleware('auth');
+Route::get('/post/editar/{post_id}', 'App\Http\Controllers\PostController@edit')->name('editar_post')->middleware('auth');
+Route::get('/post/guardar/{post_id}', 'App\Http\Controllers\PostController@store')->name('guardar_post')->middleware('auth');
+
+//articulo
+Route::get('/articulo/nuevo/{post_id}', 'App\Http\Controllers\ThingController@create')->name('nuevo_articulo')->middleware('auth');
+Route::post('/articulo/agregar/', 'App\Http\Controllers\ThingController@store')->name('agregar_articulo')->middleware('auth');
+Route::get('/articulo/remover/{id}/{post_id}', 'App\Http\Controllers\ThingController@removeThing')->name('quitar_articulo')->middleware('auth');
+
 //login con google y facebook
 Route::get('/auth/redirect/{provider}', 'App\Http\Controllers\GoogleLoginController@redirect');
 Route::get('/callback/{provider}', 'App\Http\Controllers\GoogleLoginController@callback');

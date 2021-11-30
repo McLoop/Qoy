@@ -83,11 +83,13 @@ class UserController extends Controller
         } else {
             
         }
-        $interest = Interest::where('user_id', $user_id)->get();
+        $interest = Interest::where('user_id', $user_id)->where('interest_type', 1)->get();
+        $interestSec = Interest::where('user_id', $user_id)->where('interest_type', 2)->get();
+
         if ($type=='primarios') {
             return view('interest', compact('interest', 'category'));
         } else if ($type=='secundarios'){
-            return view('interest_secundario', compact('interest', 'category'));
+            return view('interest_secundario', compact('interest', 'category','interestSec'));
         }
         
     }

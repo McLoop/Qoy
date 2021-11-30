@@ -16,8 +16,10 @@
             @foreach($category as $categoria)
             	@if($categoria->id == $interest[0]->category_id || $categoria->id == $interest[1]->category_id)
             		
+            	@elseif($categoria->id == $interestSec[0]->category_id || $categoria->id == $interestSec[1]->category_id)
+            		<p id="{{$categoria->id}}" class="interest-item bg-success text-theme">{{$categoria->category_name}}&nbsp;<i onclick="agregarInteres({{$categoria->id}})" id="B{{$categoria->id}}" class="icon-white fas fa-times fa-sm"></i></p>
             	@else
-                <p id="{{$categoria->id}}" class="interest-item text-theme">{{$categoria->category_name}}&nbsp;<i onclick="agregarInteres({{$categoria->id}})" id="B{{$categoria->id}}" class="icon-yellow fas fa-plus fa-sm"></i></p>
+                	<p id="{{$categoria->id}}" class="interest-item text-theme">{{$categoria->category_name}}&nbsp;<i onclick="agregarInteres({{$categoria->id}})" id="B{{$categoria->id}}" class="icon-yellow fas fa-plus fa-sm"></i></p>
                 @endif
             @endforeach
 
