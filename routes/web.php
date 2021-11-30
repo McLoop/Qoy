@@ -49,6 +49,9 @@ Route::get('/post/guardar/{post_id}', 'App\Http\Controllers\PostController@store
 Route::get('/articulo/nuevo/{post_id}', 'App\Http\Controllers\ThingController@create')->name('nuevo_articulo')->middleware('auth');
 Route::post('/articulo/agregar/', 'App\Http\Controllers\ThingController@store')->name('agregar_articulo')->middleware('auth');
 Route::get('/articulo/remover/{id}/{post_id}', 'App\Http\Controllers\ThingController@removeThing')->name('quitar_articulo')->middleware('auth');
+Route::get('/articulo/ver/{id}', 'App\Http\Controllers\ThingController@show')->name('ver_articulo')->middleware('auth');
+//solicitudes
+Route::get('/solicitud/nuevo/{thing_id}', 'App\Http\Controllers\ThingController@create')->name('nueva_solicitud')->middleware('auth');
 
 //login con google y facebook
 Route::get('/auth/redirect/{provider}', 'App\Http\Controllers\GoogleLoginController@redirect');

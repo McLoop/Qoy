@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\models\Category;
 use App\models\Thing;
 use App\models\Post;
+use App\Http\Controllers\Lista;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
@@ -81,9 +82,14 @@ class ThingController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($idThing)
     {
-        //
+        $things = Thing::where('thing_id', $idThing)
+        ->join('post', 'thing.post_id', '=', 'post.id')
+        ->join('users', 'post.user_id', '=', 'users.id')->get();
+        $thing_status = Lista::THING_STATUS;
+        $thing_state = Lista::THING_STATE;
+        return view('ver_articulo', compact('idThing','things','thing_status','thing_state'));
     }
 
     /**

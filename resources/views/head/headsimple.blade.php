@@ -16,6 +16,8 @@
     <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
     <link rel="stylesheet" href="{{ asset('css/fonts.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <script src="{{asset('js/push.min.js')}}"></script>
+
   </head>
   @if(isset($_COOKIE["dark_mode"]))
     @if($_COOKIE["dark_mode"])

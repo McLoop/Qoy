@@ -1,6 +1,9 @@
 "use strict";
 //INTEREST
 var contadorInteres = 0;
+
+
+
 function agregarInteres(id){
 	if ( document.getElementById(id).classList.contains('bg-success') )
 	{

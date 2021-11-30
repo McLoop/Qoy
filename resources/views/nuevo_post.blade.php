@@ -6,8 +6,10 @@
 		<div class="col-sm-6 col-md-6">
 			<h6>Crea una publicación y añade los objetos que tengas!</h6>
 			<h6 class="message_h">Puedes añadir uno o mas articulos en una misma publicación, cada articulo que publiques puede pertenecer a una categoria diferente.</h6>
+		
 		<div>
 			<h6>Articulos añadidos:</h6>
+			
 			<!--Articulos añadidos-->
 			@forelse($things as $thing)
 			<div class="datos-row-father">
@@ -31,6 +33,9 @@
 				<div class="col-sm-4 col-md-4">
 					<a type="button" class="form-control btn-add btn-primary-yellow text-a-white text-a-no-hover-white" href="{{ route('guardar_post',$idPost) }}">Publicar Post</a>
 				</div>
+				<!--<div class="col-sm-4 col-md-4">
+					<button type="button" class="form-control btn-add btn-primary-yellow text-a-white text-a-no-hover-white" onclick="notify('a')">Publicar Post</button>
+				</div>-->
 				<div class="col-sm-4 col-md-4">
 					<a type="button" class="form-control btn-add btn-primary-yellow text-a-white text-a-no-hover-white" href="{{ route('nuevo_articulo',$idPost) }}">Agregar Articulo</a>
 				</div>

@@ -22,7 +22,7 @@ class Thing extends Model
             }
             $imageName = Str::random(20).'.png';
             $imagen = Image::make($foto)->encode('png', 75);
-            $imagen->resize(80, 70, function($constraint)
+            $imagen->resize(800, 700, function($constraint)
             {
                 $constraint->upsize();
             });

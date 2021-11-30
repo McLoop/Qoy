@@ -60,7 +60,7 @@ class PostController extends Controller
         	return redirect()->route('editar_post', $idPost);
         }else{
         	foreach ($things as $thing) {
-				mandarNotificaciones($thing->category_id);
+				//mandar notificaciones
         		Thing::where('id', $thing->id)->update(['thing_state'=>1]);
         	}
         	Post::where('id', $idPost)->update(['post_state'=>1]);

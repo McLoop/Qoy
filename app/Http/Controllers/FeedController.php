@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\models\Interest;
+use App\models\Thing;
 use Illuminate\Http\Request;
 
 class FeedController extends Controller
@@ -14,7 +15,42 @@ class FeedController extends Controller
     public function index()
     {
         //toast('Loggeo con exito','success')->position('top-end');
-        return view('feed');
+        //intereses
+        $interest = Interest::where('user_id', auth()->user()->id)->where('interest_type', 1)->get('category_id');
+        $interestSec = Interest::where('user_id', auth()->user()->id)->where('interest_type', 2)->get('category_id');
+        //return $interest[0]->id;
+        //fin intereses
+        //sacar publicaciones interes primario
+        $things1 = Thing::latest('thing.created_at')
+        ->join('post', 'thing.post_id', '=', 'post.id')
+        ->join('users', 'post.user_id', '=', 'users.id')
+        ->where('thing.category_id', $interest[0]->category_id)
+        ->orWhere('thing.category_id', $interest[1]->category_id)
+        ->orderBy('thing.thing_id', 'DESC')->get();
+        //fin sacar publicaciones interes primario
+        //sacar publicaciones interes secundario
+        $things2 = Thing::latest('thing.created_at')
+        ->join('post', 'thing.post_id', '=', 'post.id')
+        ->join('users', 'post.user_id', '=', 'users.id')
+        ->where('thing.category_id', $interestSec[0]->category_id)
+        ->orWhere('thing.category_id', $interestSec[1]->category_id)
+        ->orderBy('thing.thing_id', 'DESC')->get();
+        //fin sacar publicaciones interes secundario
+        //sacar publicaciones cercanas
+        $things3 = Thing::latest('thing.created_at')
+        ->join('post', 'thing.post_id', '=', 'post.id')
+        ->join('users', 'post.user_id', '=', 'users.id')
+        ->where('thing.ubication', auth()->user()->ubication)
+        ->orderBy('thing.thing_id', 'DESC')->get();
+        //fin sacar publicaciones cercanas
+        //sacar todas las publicaciones
+        $things4 = Thing::latest('thing.created_at')
+        ->join('post', 'thing.post_id', '=', 'post.id')
+        ->join('users', 'post.user_id', '=', 'users.id')
+        ->orderBy('thing.thing_id', 'DESC')->get();
+        //fin sacar todas las publicaciones
+        return view('feed', compact('things1','things2','things3', 'things4'));
+        //return $things1;
     }
 
     /**

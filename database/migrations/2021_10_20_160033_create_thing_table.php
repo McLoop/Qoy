@@ -14,7 +14,7 @@ class CreateThingTable extends Migration
     public function up()
     {
         Schema::create('thing', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('thing_id');
             $table->string('thing_name');
             $table->string('description');
             $table->string('photo');
