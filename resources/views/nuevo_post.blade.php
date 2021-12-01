@@ -17,7 +17,7 @@
 				<div class="datos-row-items">
 					<h6 class="item-name"><strong>{{$thing->thing_name}}</strong></h6>
 					<h6 class="item-description"><strong>{{$thing->description}}</strong></h6>
-					<a class="delete-item-th" href="{{route('quitar_articulo',[$thing->id,$idPost])}}"><i class="icon-red fas fa-times fa-lg"></i></a>
+					<a class="delete-item-th" href="{{route('quitar_articulo',[$thing->thing_id,$idPost])}}"><i class="icon-red fas fa-times fa-lg"></i></a>
 				</div>
 			</div>
 			@empty

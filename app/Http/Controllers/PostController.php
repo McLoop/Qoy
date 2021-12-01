@@ -61,10 +61,10 @@ class PostController extends Controller
         }else{
         	foreach ($things as $thing) {
 				//mandar notificaciones
-        		Thing::where('id', $thing->id)->update(['thing_state'=>1]);
+        		Thing::where('thing_id', $thing->thing_id)->update(['thing_state'=>1]);
         	}
         	Post::where('id', $idPost)->update(['post_state'=>1]);
-            toast('Se realizo tu publicación','success');
+            toast('Se realizo tu publicación','info');
 		    return redirect()->route('feed');
         }
     }

@@ -79,17 +79,25 @@ class UserController extends Controller
         //sacamos las ubicaiones de bdd
         $category = Category::where('category_status', 1)->get();
         if (auth()->user()->user_state==1) {
-            alert('Selecciona tus intereses','Debes elegir 2 intereses primario y 2 secundarios como máximo.','info');
-        } else {
+                alert('Selecciona tus intereses','Debes elegir 2 intereses primario y 2 secundarios como máximo.','info');
+            } 
+        if (auth()->user()->user_state==1 && $type=='secundario') {
+                $interest = Interest::where('user_id', $user_id)->where('interest_type', 1)->get();
+                return view('interest_secundario', compact('interest', 'category'));
+            }
+        if(auth()->user()->user_state>=2){
             
-        }
-        $interest = Interest::where('user_id', $user_id)->where('interest_type', 1)->get();
-        $interestSec = Interest::where('user_id', $user_id)->where('interest_type', 2)->get();
+            $interest = Interest::where('user_id', $user_id)->where('interest_type', 1)->get();
+            $interestSec = Interest::where('user_id', $user_id)->where('interest_type', 2)->get();
 
-        if ($type=='primarios') {
-            return view('interest', compact('interest', 'category'));
-        } else if ($type=='secundarios'){
-            return view('interest_secundario', compact('interest', 'category','interestSec'));
+            if ($type=='primarios') {
+                return view('editar_interest', compact('interest', 'category'));
+            } else if ($type=='secundarios'){
+                return view('editar_interest_secundario', compact('interest', 'category','interestSec'));
+            }
+        }else{
+                return view('interest', compact('category'));
+
         }
         
     }
@@ -114,7 +122,24 @@ class UserController extends Controller
                 'interest_type'=>1,
                 'interest_status'=>1
             ]);
-        return redirect()->route('editar_perfil');
+        return redirect()->route('editar_intereses', [auth()->user()->id,'secundario']);
+    }
+
+    /**
+     * Edita los intereses primarios de un perfil.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function editPerfilPrimaryInterest(Request $request)
+    {
+        //sacamos las ubicaiones de bdd
+        $interest = Interest::where('user_id', request('user'))
+        ->where('interest_type',1)->get();
+        Interest::where('id', $interest[0]->id)
+        ->update(['category_id'=>request('primario1')]);
+        Interest::where('id', $interest[1]->id)
+        ->update(['category_id'=>request('primario1')]);
+        return redirect()->route('editar_intereses', [auth()->user()->id,'secundarios']);
     }
 
     /**
@@ -138,6 +163,23 @@ class UserController extends Controller
                 'interest_status'=>1
             ]);
         User::where('id', request('user'))->update(['user_state'=>2]);
+        return redirect()->route('editar_perfil');
+    }
+
+    /**
+     * Edita los intereses primarios de un perfil.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function editPerfilSecondaryInterest(Request $request)
+    {
+        //sacamos las ubicaiones de bdd
+        $interest = Interest::where('user_id', request('user'))
+        ->where('interest_type',2)->get();
+        Interest::where('id', $interest[0]->id)
+        ->update(['category_id'=>request('secundario1')]);
+        Interest::where('id', $interest[1]->id)
+        ->update(['category_id'=>request('secundario2')]);
         return redirect()->route('editar_perfil');
     }
 

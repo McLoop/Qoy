@@ -35,6 +35,11 @@ Route::post('/login/qoy', 'App\Http\Controllers\UserController@loginNormal')->na
 Route::post('/perfil/intereses_guardar/', 'App\Http\Controllers\UserController@setPerfilPrimaryInterest')->name('guardar_intereses_primario')->middleware('auth');
 Route::post('/perfil/intereses_guardar/secundario', 'App\Http\Controllers\UserController@setPerfilSecondaryInterest')->name('guardar_intereses_secundario')->middleware('auth');
 
+Route::post('/perfil/intereses_editar/', 'App\Http\Controllers\UserController@editPerfilPrimaryInterest')->name('editar_intereses_primario')->middleware('auth');
+Route::post('/perfil/intereses_editar_secundario/', 'App\Http\Controllers\UserController@editPerfilSecondaryInterest')->name('editar_intereses_secundario')->middleware('auth');
+
+
+
 
 //feed
 Route::get('/inicio', 'App\Http\Controllers\FeedController@index')->name('feed')->middleware('auth');
@@ -51,7 +56,12 @@ Route::post('/articulo/agregar/', 'App\Http\Controllers\ThingController@store')-
 Route::get('/articulo/remover/{id}/{post_id}', 'App\Http\Controllers\ThingController@removeThing')->name('quitar_articulo')->middleware('auth');
 Route::get('/articulo/ver/{id}', 'App\Http\Controllers\ThingController@show')->name('ver_articulo')->middleware('auth');
 //solicitudes
-Route::get('/solicitud/nuevo/{thing_id}', 'App\Http\Controllers\ThingController@create')->name('nueva_solicitud')->middleware('auth');
+Route::get('/solicitud/nuevo/{thing_id}', 'App\Http\Controllers\PropertyRequestController@create')->name('nueva_solicitud')->middleware('auth');
+Route::post('/solicitud/agregar/', 'App\Http\Controllers\PropertyRequestController@store')->name('agregar_solicitud')->middleware('auth');
+
+//categorias
+Route::get('/categorias', 'App\Http\Controllers\FeedController@category')->name('categorias')->middleware('auth');
+
 
 //login con google y facebook
 Route::get('/auth/redirect/{provider}', 'App\Http\Controllers\GoogleLoginController@redirect');

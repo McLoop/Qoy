@@ -6,6 +6,7 @@ use App\models\Category;
 use App\models\Thing;
 use App\models\Post;
 use App\Http\Controllers\Lista;
+use App\models\PropertyRequest;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
@@ -89,7 +90,8 @@ class ThingController extends Controller
         ->join('users', 'post.user_id', '=', 'users.id')->get();
         $thing_status = Lista::THING_STATUS;
         $thing_state = Lista::THING_STATE;
-        return view('ver_articulo', compact('idThing','things','thing_status','thing_state'));
+        $propertyRequest = PropertyRequest::where('thing_id', $idThing)->where('request_state',1)->get();
+        return view('ver_articulo', compact('idThing','things','thing_status','thing_state','propertyRequest'));
     }
 
     /**

@@ -62,7 +62,7 @@
                     <ul class="rd-navbar-nav">
                       <li class="rd-nav-item {{request()->routeIs('feed') ? 'active' : ''}}"><a class="rd-nav-link text-theme text-a-no-hover" href="{{route('feed')}}">Inicio</a>
                       </li>
-                      <li class="rd-nav-item"><a class="rd-nav-link text-theme text-a-no-hover" href="#">Categorias</a>
+                      <li class="rd-nav-item {{request()->routeIs('categorias') ? 'active' : ''}}"><a class="rd-nav-link text-theme text-a-no-hover" href="{{route('categorias')}}">Categorias</a>
                       </li>
                     </ul>
                   </div>

@@ -48,7 +48,7 @@
         <div class="datos-row">
             <i class="icon-information fas fa-question-circle fa-lg"><span class="tooltip" title="Esta es la cantidad de personas que quieren este articulo.">aa</span></i>
             <h6 class="titulo-yellow">Solicitudes recibidas:</h6>&nbsp;
-            <h6 class="datos-perfil"> solicitudes</h6>
+            <h6 class="datos-perfil">{{$propertyRequest->count()}}</h6>
         </div>
         <br><br>
         @empty

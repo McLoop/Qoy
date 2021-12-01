@@ -127,4 +127,12 @@ class Lista {
                 4=>'Eliminado',
         );
 
+        const INTEREST_GRADE = array(
+                0=>'Muy poco interesado',
+                1=>'Medio interesado',
+                2=>'Regular',
+                3=>'Interesado',
+                4=>'Muy Interesado',
+        );
+
 }

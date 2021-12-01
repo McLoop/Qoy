@@ -1,8 +1,11 @@
 "use strict";
 //INTEREST
 var contadorInteres = 0;
+var rngs = [ 'Muy poco interesado','Medio interesado','Regular','Interesado','Muy Interesado'];
+function rangeSlide(value) {
 
-
+    document.getElementById('rangeValue').innerHTML = rngs[value];
+}
 
 function agregarInteres(id){
 	if ( document.getElementById(id).classList.contains('bg-success') )
