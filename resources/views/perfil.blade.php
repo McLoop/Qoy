@@ -99,14 +99,16 @@
                 </div>
                 <button type="submit" class="form-control btn-primary-yellow">Guardar Ubicacion</button>
                 </form>
-                <form method="post">
+                <form action="{{ route('addDatosUser') }}" method="post">
                 @csrf
                 <h6 class="message_h">Estos datos no son obligatorios, pero pueden ser clave al momento de un solicitar un objeto, dado que garantizan la seguridad entre usuarios dentro de QOY.</h6>
                 <label for="ci" class="text-label-left text-theme">Añade un carnet de identificación</label>
                 <input type="number" min="1111111" name="carnet" id="ci" class="input-line-yellow form-control">
+                <label for="tel" class="text-label-left text-theme">Añade un teléfono celular</label>
+                <input type="number" min="1111111" name="tel" id="tel" class="input-line-yellow form-control">
                 <label for="dir" class="text-label-left text-theme">Añade una dirección</label>
                 <input type="text" name="direccion" id="dir" class="input-line-yellow form-control" placeholder="Av. principal entre calle 1 y calle 2">
-                <button type="submit" disabled="true" class="form-control btn-primary-yellow">Guardar datos</button>
+                <button type="submit" class="form-control btn-primary-yellow">Guardar datos</button>
                 </form>
                 <br><br>
 	</div>

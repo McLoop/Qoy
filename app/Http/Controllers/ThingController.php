@@ -78,6 +78,34 @@ class ThingController extends Controller
     }
 
     /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function storeEdit(Request $request)
+    {
+        $ruta='/images/articulos/';
+        $foto;
+        $idPost=request('idPost');
+        if(request('fotoDefault')==1)
+        {
+            $foto = $ruta.'default.png';
+        }
+        else{
+            if ($foto = Thing::setImagenArticulo(request('foto_up'))) {
+                    }else{
+                        $foto = $ruta.'default.png';
+                    }
+        }
+        
+        Thing::where('thing_id', request('idThing'))->update(['thing_name'=>request('nombre'),'description'=>request('descripcion'),'photo'=>$foto,'status'=>request('estado'),'category_id'=>request('categoria')]);
+
+
+        return redirect()->route('editar_post', $idPost);
+    }
+
+    /**
      * Display the specified resource.
      *
      * @param  int  $id
@@ -100,9 +128,12 @@ class ThingController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($idThing, $idPost)
     {
-        //
+        $category = Category::where('category_status', 1)->get();
+        $things = Thing::where('thing_id', $idThing)->get();
+        return view('editar_articulo', compact('idThing', 'idPost','things','category'));
+        
     }
 
     /**
@@ -133,6 +164,31 @@ class ThingController extends Controller
     }
 
     /**
+     * Elimina los articulos y posteriormente Elimina el post.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function delete($idPost)
+    {
+        $things = Thing::where('post_id', $idPost)->get();
+
+        if($things->isEmpty()){
+            //borrar solo post
+            toast('Añade primero algun artículo','error');
+            return redirect()->route('editar_post', $idPost);
+        }else{
+            foreach ($things as $thing) {
+                //mandar notificaciones
+                Thing::where('thing_id', $thing->thing_id)->update(['thing_state'=>4]);
+            }
+            Post::where('id', $idPost)->update(['post_state'=>4]);
+            toast('Se realizo tu publicación','info');
+            return redirect()->route('publicaciones_propias');
+        }
+    }
+
+    /**
      * Elimina los articulos y posteriormente cancela el post.
      *
      * @param  int  $id
@@ -149,7 +205,7 @@ class ThingController extends Controller
 	        return redirect()->route('feed');
         }else{
         	foreach ($things as $thing) {
-        		$thingDelet = Thing::find($thing->id);
+        		$thingDelet = Thing::find($thing->thing_id);
 				$thingDelet->delete();
         	}
         		$post = Post::find($idPost);

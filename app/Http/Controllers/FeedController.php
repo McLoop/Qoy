@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\models\Interest;
+use App\Http\Controllers\Lista;
 use App\models\Thing;
 use App\models\Category;
 use Illuminate\Http\Request;
@@ -49,10 +50,14 @@ class FeedController extends Controller
         $things4 = Thing::latest('thing.created_at')
         ->join('post', 'thing.post_id', '=', 'post.id')
         ->join('users', 'post.user_id', '=', 'users.id')
-        ->where('thing.thing_state', 1)
+        //->where('thing.thing_state', 1)
         ->orderBy('thing.thing_id', 'DESC')->get();
         //fin sacar todas las publicaciones
-        return view('feed', compact('things1','things2','things3', 'things4'));
+        $ubication = Lista::UBICATION;
+        $thing_status=Lista::THING_STATUS;
+        $thing_state=Lista::THING_STATE;
+        $category_list=Lista::CATEGORY;
+        return view('feed', compact('things1','things2','things3', 'things4','thing_status','ubication','thing_state','category_list'));
         //return $things1;
         }else{
             return redirect()->route('editar_perfil');//perfil
@@ -69,17 +74,6 @@ class FeedController extends Controller
         //
     }
 
-    /**
-     * Muestra las categorias.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function category()
-    {
-        $category = Category::where('category_status', 1)->get();
-        return view('categorias', compact('category'));
-        
-    }
 
     /**
      * Store a newly created resource in storage.

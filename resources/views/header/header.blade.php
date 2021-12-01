@@ -86,9 +86,10 @@
                           <ul>
                             <li class="rd-nav-item li-menu-der"><a hidden="true" href="#">Opciones</a></li>
                             <li class="rd-nav-item li-menu-der"><a href="{{route('editar_perfil')}}">Tu perfil</a></li>
-                            <li class="rd-nav-item li-menu-der"><a href="#">Tus publicaciones</a></li>
-                            <li class="rd-nav-item li-menu-der"><a href="#">Solicitudes enviadas</a></li>
-                            <li class="rd-nav-item li-menu-der"><a href="#">Configuración</a></li>
+                            <li class="rd-nav-item li-menu-der"><a href="{{route('publicaciones_propias')}}">Tus publicaciones</a></li>
+                            <li class="rd-nav-item li-menu-der"><a href="{{route('solicitudes_enviadas')}}">Solicitudes enviadas</a></li>
+                            <li class="rd-nav-item li-menu-der"><a href="{{route('solicitudes_recibidas')}}">Solicitudes recibidas</a></li>
+                            <li class="rd-nav-item li-menu-der"><a href="{{route('terminos')}}">Términos y condiciones.</a></li>
                             <li class="rd-nav-item li-menu-der"><a href="{{ route('logout') }}">Cerrar Sesión</a></li>
                           </ul>
                         </div>

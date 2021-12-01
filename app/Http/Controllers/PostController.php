@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\models\Post;
 use App\models\Thing;
+use App\Http\Controllers\Lista;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -67,6 +68,18 @@ class PostController extends Controller
             toast('Se realizo tu publicación','info');
 		    return redirect()->route('feed');
         }
+    }
+
+    /**
+     * Muestra mis post.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showMines()
+    {
+        $posts = Post::where('user_id', auth()->user()->id)->get();
+        $POST_STATE=Lista::POST_STATE;
+        return view('mis_posts', compact('posts','POST_STATE'));
     }
 
     /**

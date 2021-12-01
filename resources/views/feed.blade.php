@@ -55,10 +55,10 @@
 				<div class="info">
 					<h5> Detalles</h5>
 					<ul>
-						<li><strong>Estado : </strong>{{ $thing->status }}</li>
-						<li><strong>Ubicación : </strong>{{ $thing->ubication }}</li>
-						<li><strong>Categoria: </strong>{{ $thing->category_id }}</li>
-						<li><strong>Esta: </strong>{{ $thing->thing_state }}</li>
+						<li><strong>Estado : </strong>{{ $thing_status[$thing->status] }}</li>
+						<li><strong>Ubicación : </strong>{{ $ubication[$thing->ubication] }}</li>
+						<li><strong>Categoria: </strong>{{ $category_list[$thing->category_id] }}</li>
+						<li><strong></strong>{{ $thing_state[$thing->thing_state] }}</li>
 						
 					</ul>
 				</div>
@@ -66,7 +66,7 @@
 				</div>
 			</div>
 			@empty
-			<h6 class="message-h">No hay publicaciones con el interes primario.</h6><br>
+			<h6 class="message_h">No hay publicaciones con el interes primario.</h6><br>
 			@endforelse
 			<!-- Fin publicaciones interes primario -->
 
@@ -112,10 +112,10 @@
 				<div class="info">
 					<h5> Detalles</h5>
 					<ul>
-						<li><strong>Estado : </strong>{{ $thing->status }}</li>
-						<li><strong>Ubicación : </strong>{{ $thing->ubication }}</li>
-						<li><strong>Categoria: </strong>{{ $thing->category_id }}</li>
-						<li><strong>Esta: </strong>{{ $thing->thing_state }}</li>
+						<li><strong>Estado : </strong>{{ $thing_status[$thing->status] }}</li>
+						<li><strong>Ubicación : </strong>{{ $ubication[$thing->ubication] }}</li>
+						<li><strong>Categoria: </strong>{{ $category_list[$thing->category_id] }}</li>
+						<li><strong></strong>{{ $thing_state[$thing->thing_state] }}</li>
 						
 					</ul>
 				</div>
@@ -123,7 +123,7 @@
 				</div>
 			</div>
 			@empty
-			<h6 class="message-h">No hay publicaciones con el interes secundario.</h6><br>
+			<h6 class="message_h">No hay publicaciones con el interes secundario.</h6><br>
 			@endforelse
 			<!-- Fin publicaciones interes Secundario -->
 
@@ -169,10 +169,10 @@
 				<div class="info">
 					<h5> Detalles</h5>
 					<ul>
-						<li><strong>Estado : </strong>{{ $thing->status }}</li>
-						<li><strong>Ubicación : </strong>{{ $thing->ubication }}</li>
-						<li><strong>Categoria: </strong>{{ $thing->category_id }}</li>
-						<li><strong>Esta: </strong>{{ $thing->thing_state }}</li>
+						<li><strong>Estado : </strong>{{ $thing_status[$thing->status] }}</li>
+						<li><strong>Ubicación : </strong>{{ $ubication[$thing->ubication] }}</li>
+						<li><strong>Categoria: </strong>{{ $category_list[$thing->category_id] }}</li>
+						<li><strong></strong>{{ $thing_state[$thing->thing_state] }}</li>
 						
 					</ul>
 				</div>
@@ -180,7 +180,7 @@
 				</div>
 			</div>
 			@empty
-			<h6 class="message-h">No hay publicaciones cercanas.</h6><br>
+			<h6 class="message_h">No hay publicaciones cercanas.</h6><br>
 			@endforelse	
 			<!-- Fin publicaciones cercanas -->
 
@@ -226,10 +226,10 @@
 				<div class="info">
 					<h5> Detalles</h5>
 					<ul>
-						<li><strong>Estado : </strong>{{ $thing->status }}</li>
-						<li><strong>Ubicación : </strong>{{ $thing->ubication }}</li>
-						<li><strong>Categoria: </strong>{{ $thing->category_id }}</li>
-						<li><strong>Esta: </strong>{{ $thing->thing_state }}</li>
+						<li><strong>Estado : </strong>{{ $thing_status[$thing->status] }}</li>
+						<li><strong>Ubicación : </strong>{{ $ubication[$thing->ubication] }}</li>
+						<li><strong>Categoria: </strong>{{ $category_list[$thing->category_id] }}</li>
+						<li><strong></strong>{{ $thing_state[$thing->thing_state] }}</li>
 						
 					</ul>
 				</div>
@@ -237,7 +237,7 @@
 				</div>
 			</div>
 			@empty
-			<h6 class="message-h">Ya no hay mas publicacíones.</h6>
+			<h6 class="message_h">Ya no hay mas publicacíones.</h6>
 			@endforelse
 			<!-- fin publicaciones  -->
 

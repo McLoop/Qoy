@@ -127,12 +127,55 @@ class Lista {
                 4=>'Eliminado',
         );
 
+        const POST_STATE = array(
+                0=>'Incompleto',
+                1=>'Publicado',
+                2=>'En revisión',
+                3=>'Entregado',
+                4=>'Eliminado',
+        );
+
+        const REQUEST_STATE = array(
+                0=>'Incompleto',
+                1=>'Enviado',
+                2=>'Aprobado',
+                3=>'Denegado',
+                4=>'Cancelado',
+        );
+
+        const REQUEST_STATE_2 = array(
+                0=>'Incompleto',
+                1=>'Recibido',
+                2=>'Aprobado',
+                3=>'Denegado',
+                4=>'Cancelado',
+        );
+
         const INTEREST_GRADE = array(
                 0=>'Muy poco interesado',
                 1=>'Medio interesado',
                 2=>'Regular',
                 3=>'Interesado',
                 4=>'Muy Interesado',
+        );
+
+        const CATEGORY = array(
+                1=>'Electrodomesticos',
+                2=>'Aparatos Electronicos',
+                3=>'Muebles',
+                4=>'Adornos',
+                5=>'Utensilios de cocina',
+                6=>'Herramientas',
+                7=>'Ropa',
+                8=>'Ropa Infantil',
+                9=>'Plasticos ',
+                10=>'Decoración',
+                11=>'Jardín y exteriores',
+                12=>'Mascotas',
+                13=>'Juguetes',
+                14=>'Mochilas y bolsos',
+                15=>'Dormitorio y baño'
+
         );
 
 }

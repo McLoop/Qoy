@@ -24,7 +24,7 @@
 			<!-- avatar -->
 			<label for="pwd" class="text-label-left text-theme">Contraseña</label>
 			<input type="password" name="password" id="pwd" autocomplete="off" class="input-line-yellow form-control">
-			<p class="text-theme">Al registrarte aceptas nuestros <a href="">terminos y condiciones.</a></p>
+			<p class="text-theme">Al registrarte aceptas nuestros <a href="{{route('terminos')}}">terminos y condiciones.</a></p>
 			<button type="submit" class="form-control btn-primary-yellow">Registrarse</button>
 			</form>
 			<p class="text-center lead">- o -</p>

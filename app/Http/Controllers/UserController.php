@@ -203,6 +203,22 @@ class UserController extends Controller
     }
 
     /**
+     * Configura la datos adicionales de un perfil..
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function addDatos(Request $request)
+    {
+        //si el usuario no tiene ubicacion la creamos
+         User::where('id', auth()->user()->id)->update(['user_ci'=>request('carnet')]);
+         User::where('id', auth()->user()->id)->update(['user_phone'=>request('tel')]);
+         User::where('id', auth()->user()->id)->update(['user_dir'=>request('direccion')]);
+         User::where('id', auth()->user()->id)->update(['user_dir'=>request('direccion')]);
+         User::where('id', auth()->user()->id)->update(['user_state'=>4]);
+        return redirect()->route('editar_perfil')->with('info', 'Ubicación agregada correctamente');
+    }
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response

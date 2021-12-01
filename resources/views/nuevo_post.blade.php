@@ -17,7 +17,12 @@
 				<div class="datos-row-items">
 					<h6 class="item-name"><strong>{{$thing->thing_name}}</strong></h6>
 					<h6 class="item-description"><strong>{{$thing->description}}</strong></h6>
-					<a class="delete-item-th" href="{{route('quitar_articulo',[$thing->thing_id,$idPost])}}"><i class="icon-red fas fa-times fa-lg"></i></a>
+					<a class="edit-item-th" href="{{route('editar_articulo',[$thing->thing_id,$idPost])}}"><i class="icon-green fas fa-edit fa-lg"></i></a>
+					@if(isset($thing))
+						@if($thing->thing_state!=4)
+						<a class="delete-item-th" href="{{route('quitar_articulo',[$thing->thing_id,$idPost])}}"><i class="icon-red fas fa-times fa-lg"></i></a>
+						@endif
+					@endif
 				</div>
 			</div>
 			@empty
@@ -27,18 +32,40 @@
 			<!--Fin articulos añadidos-->
 		</div>
 			<div class="row">
-				<div class="col-sm-4 col-md-4">
-					<a type="button" class="form-control btn-add btn-primary-yellow text-a-white text-a-no-hover-white" href="{{ route('cancelar_post',$idPost) }}">Cancelar</a>
-				</div>
-				<div class="col-sm-4 col-md-4">
-					<a type="button" class="form-control btn-add btn-primary-yellow text-a-white text-a-no-hover-white" href="{{ route('guardar_post',$idPost) }}">Publicar Post</a>
-				</div>
+				@if(isset($thing))
+					@if($thing->thing_state==0)
+					<div class="col-sm-4 col-md-4">
+						<a type="button" class="form-control btn-add btn-primary-yellow text-a-white text-a-no-hover-white" href="{{ route('cancelar_post',$idPost) }}">Cancelar</a>
+					</div>
+					<div class="col-sm-4 col-md-4">
+						<a type="button" class="form-control btn-add btn-primary-yellow text-a-white text-a-no-hover-white" href="{{ route('guardar_post',$idPost) }}">Publicar Post</a>
+					</div>
+					@endif
+
+					@if($thing->thing_state==1)
+					<div class="col-sm-4 col-md-4"></div>
+					<div class="col-sm-4 col-md-4">
+						<a type="button" class="form-control btn-add btn-primary-yellow text-a-white text-a-no-hover-white" href="{{ route('eliminar_post',$idPost) }}">Eliminar</a>
+					</div>
+					@endif
+					@if($thing->thing_state!=4)
+					<div class="col-sm-4 col-md-4">
+						<a type="button" class="form-control btn-add btn-primary-yellow text-a-white text-a-no-hover-white" href="{{ route('nuevo_articulo',$idPost) }}">Agregar Articulo</a>
+					</div>
+					@endif
+				@else
+					<div class="col-sm-4 col-md-4"></div>
+					<div class="col-sm-4 col-md-4">
+						<a type="button" class="form-control btn-add btn-primary-yellow text-a-white text-a-no-hover-white" href="{{ route('cancelar_post',$idPost) }}">Cancelar</a>
+					</div>
+					<div class="col-sm-4 col-md-4">
+						<a type="button" class="form-control btn-add btn-primary-yellow text-a-white text-a-no-hover-white" href="{{ route('nuevo_articulo',$idPost) }}">Agregar Articulo</a>
+					</div>
+				@endif
 				<!--<div class="col-sm-4 col-md-4">
 					<button type="button" class="form-control btn-add btn-primary-yellow text-a-white text-a-no-hover-white" onclick="notify('a')">Publicar Post</button>
 				</div>-->
-				<div class="col-sm-4 col-md-4">
-					<a type="button" class="form-control btn-add btn-primary-yellow text-a-white text-a-no-hover-white" href="{{ route('nuevo_articulo',$idPost) }}">Agregar Articulo</a>
-				</div>
+				
 			</div>
 		</div>
 		<div class="col-sm-3 col-md-3"></div>
