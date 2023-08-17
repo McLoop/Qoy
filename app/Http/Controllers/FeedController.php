@@ -27,6 +27,7 @@ class FeedController extends Controller
         $things1 = Thing::latest('thing.created_at')
         ->join('post', 'thing.post_id', '=', 'post.id')
         ->join('users', 'post.user_id', '=', 'users.id')
+        ->where('thing.thing_state', '<', '4')
         ->where('thing.category_id', $interest[0]->category_id)
         ->orWhere('thing.category_id', $interest[1]->category_id)
         ->orderBy('thing.thing_id', 'DESC')->get();
@@ -35,6 +36,7 @@ class FeedController extends Controller
         $things2 = Thing::latest('thing.created_at')
         ->join('post', 'thing.post_id', '=', 'post.id')
         ->join('users', 'post.user_id', '=', 'users.id')
+        ->where('thing.thing_state', '<', '4')
         ->where('thing.category_id', $interestSec[0]->category_id)
         ->orWhere('thing.category_id', $interestSec[1]->category_id)
         ->orderBy('thing.thing_id', 'DESC')->get();
@@ -43,6 +45,7 @@ class FeedController extends Controller
         $things3 = Thing::latest('thing.created_at')
         ->join('post', 'thing.post_id', '=', 'post.id')
         ->join('users', 'post.user_id', '=', 'users.id')
+        ->Where('thing.thing_state', '<', 4)
         ->where('thing.ubication', auth()->user()->ubication)
         ->orderBy('thing.thing_id', 'DESC')->get();
         //fin sacar publicaciones cercanas

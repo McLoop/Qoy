@@ -10,21 +10,26 @@
 		<a type="button" href="{{ route('editar_intereses', [auth()->user()->id,'secundarios']) }}" class="form-control btn-sig btn-primary-yellow text-a-white text-a-no-hover-white">Siguiente</a>
 		<br><h6>Edita tus 2 interes primarios:</h6><br>
         <div>
-            @foreach($category as $categoria)
-            	@if($categoria->id == $interest[0]->category_id || $categoria->id == $interest[1]->category_id)
-            		<p id="{{$categoria->id}}" class="interest-item bg-success text-theme">{{$categoria->category_name}}&nbsp;<i onclick="agregarInteres({{$categoria->id}})" id="B{{$categoria->id}}" class="icon-white fas fa-times fa-sm"></i></p>
-            	@else
-                <p id="{{$categoria->id}}" class="interest-item text-theme">{{$categoria->category_name}}&nbsp;<i onclick="agregarInteres({{$categoria->id}})" id="B{{$categoria->id}}" class="icon-yellow fas fa-plus fa-sm"></i></p>
-                @endif
-            @endforeach
+        	@if($interest->isEmpty())
+			<h6 class="message_h">No tienes intereses aún.</h6><br>				
+        	@else
+			@foreach($category as $categoria)
+	            	@if($categoria->id == $interest[0]->category_id || $categoria->id == $interest[1]->category_id)
+	            		<p id="{{$categoria->id}}" class="interest-item bg-success text-theme">{{$categoria->category_name}}&nbsp;<i onclick="agregarInteres({{$categoria->id}})" id="B{{$categoria->id}}" class="icon-white fas fa-times fa-sm"></i></p>
+	            	@else
+	                	<p id="{{$categoria->id}}" class="interest-item text-theme">{{$categoria->category_name}}&nbsp;<i onclick="agregarInteres({{$categoria->id}})" id="B{{$categoria->id}}" class="icon-yellow fas fa-plus fa-sm"></i></p>
+	                @endif
+	            @endforeach
 
-            <form action="{{ route('editar_intereses_primario') }}" method="post">
-            @csrf
-	            <input type="text" hidden="true" name="primario1" id="primario1">
-	            <input type="text" hidden="true" name="primario2" id="primario2">
-	            <input type="text" hidden="true" name="user" value="{{auth()->user()->id}}">
-	            <button type="submit" id="interestButton" disabled="true" class="form-control btn-primary-yellow">Guardar intereses</button><br><br>
-            </form>
+	            <form action="{{ route('editar_intereses_primario') }}" method="post">
+	            @csrf
+		            <input type="text" hidden="true" name="primario1" id="primario1">
+		            <input type="text" hidden="true" name="primario2" id="primario2">
+		            <input type="text" hidden="true" name="user" value="{{auth()->user()->id}}">
+		            <button type="submit" id="interestButton" disabled="true" class="form-control btn-primary-yellow">Guardar intereses</button><br><br>
+	            </form>
+			@endif
+	            
         </div>
 	</div>
 	<div class="col-sm-3 col-md-3"></div>

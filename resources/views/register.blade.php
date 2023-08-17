@@ -30,7 +30,7 @@
 			<p class="text-center lead">- o -</p>
             <a type="button" class="form-control btn-google-form text-a-black text-a-no-hover-black" href="{{ url('/auth/redirect/google') }}"><i class="text-red fas fa-google fa-1x"></i>&nbsp;&nbsp;&nbsp;Registrarse con Google</a>
             <a type="button" class="form-control btn-facebook-form text-a-white text-a-no-hover-white" href="{{ url('/auth/redirect/facebook') }}"><i class="fas fa-facebook fa-1x"></i>&nbsp;Registrarse con Facebook</a><br>
-            <p class="text-theme">¿Ya tienes una cuenta?</p><a href="{{ route('register')}}">Ingresa Aqui</a>
+            <p class="text-theme">¿Ya tienes una cuenta?</p><a href="{{ route('login')}}">Ingresa Aqui</a>
             <p class="p-bottom"></p>
 		</div>
 		<div class="col-sm-4 col-md-4"></div>
