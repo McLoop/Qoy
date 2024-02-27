@@ -12,14 +12,14 @@
         <h6 class="message_h">Detalles de este articulo.</h6><br>
         <div class="datos-row">
             <i class="icon-information fas fa-question-circle fa-lg"><span class="tooltip" title="Esta descripción la añadio el dueño.">aa</span></i>
-            <h6 class="titulo-yellow">Descripcion:</h6>&nbsp;
-            <h6 class="datos-perfil">{{$thing->description}}</h6>
+            <h6 class="titulo-yellow">Descripcion:</h6>
+            <h6 class="datos-perfil">&nbsp;{{$thing->description}}</h6>
         </div>
 
         <div class="datos-row">
             <i class="icon-information fas fa-question-circle fa-lg"><span class="tooltip" title="Este es el estado en el que se encuentra, posiblemente puede variar con el de la foto.">aa</span></i>
-            <h6 class="titulo-yellow">Estado:</h6>&nbsp;
-            <h6 class="datos-perfil">{{$thing_status[$thing->status]}}</h6>
+            <h6 class="titulo-yellow">Estado:</h6>
+            <h6 class="datos-perfil">&nbsp;{{$thing_status[$thing->status]}}</h6>
         </div>
         <div class="datos-row">
             <i class="icon-information fas fa-question-circle fa-lg"><span class="tooltip" title="Esta es la fecha en que se publico el articulo.">aa</span></i>

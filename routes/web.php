@@ -46,6 +46,8 @@ Route::post('/perfil/add/datos', 'App\Http\Controllers\UserController@addDatos')
 
 //feed
 Route::get('/inicio', 'App\Http\Controllers\FeedController@index')->name('feed')->middleware('auth');
+Route::get('/pagination/{pagina}', 'App\Http\Controllers\FeedController@pagination')->name('pagination')->middleware('auth');
+
 
 //post
 Route::get('/post/nuevo', 'App\Http\Controllers\PostController@create')->name('nuevo_post')->middleware('auth');

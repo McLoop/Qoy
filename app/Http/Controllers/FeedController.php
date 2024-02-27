@@ -24,7 +24,7 @@ class FeedController extends Controller
         //return $interest[0]->id;
         //fin intereses
         //sacar publicaciones interes primario
-        $things1 = Thing::latest('thing.created_at')
+        $things = Thing::latest('thing.created_at')
         ->join('post', 'thing.post_id', '=', 'post.id')
         ->join('users', 'post.user_id', '=', 'users.id')
         ->where('thing.thing_state', '<', '4')
@@ -32,38 +32,69 @@ class FeedController extends Controller
         ->orWhere('thing.category_id', $interest[1]->category_id)
         ->orderBy('thing.thing_id', 'DESC')->get();
         //fin sacar publicaciones interes primario
-        //sacar publicaciones interes secundario
-        $things2 = Thing::latest('thing.created_at')
-        ->join('post', 'thing.post_id', '=', 'post.id')
-        ->join('users', 'post.user_id', '=', 'users.id')
-        ->where('thing.thing_state', '<', '4')
-        ->where('thing.category_id', $interestSec[0]->category_id)
-        ->orWhere('thing.category_id', $interestSec[1]->category_id)
-        ->orderBy('thing.thing_id', 'DESC')->get();
-        //fin sacar publicaciones interes secundario
-        //sacar publicaciones cercanas
-        $things3 = Thing::latest('thing.created_at')
-        ->join('post', 'thing.post_id', '=', 'post.id')
-        ->join('users', 'post.user_id', '=', 'users.id')
-        ->Where('thing.thing_state', '<', 4)
-        ->where('thing.ubication', auth()->user()->ubication)
-        ->orderBy('thing.thing_id', 'DESC')->get();
-        //fin sacar publicaciones cercanas
-        //sacar todas las publicaciones
-        $things4 = Thing::latest('thing.created_at')
-        ->join('post', 'thing.post_id', '=', 'post.id')
-        ->join('users', 'post.user_id', '=', 'users.id')
-        //->where('thing.thing_state', 1)
-        ->orderBy('thing.thing_id', 'DESC')->get();
-        //fin sacar todas las publicaciones
+        
         $ubication = Lista::UBICATION;
         $thing_status=Lista::THING_STATUS;
         $thing_state=Lista::THING_STATE;
         $category_list=Lista::CATEGORY;
-        return view('feed', compact('things1','things2','things3', 'things4','thing_status','ubication','thing_state','category_list'));
+        return view('feed', compact('things','thing_status','ubication','thing_state','category_list'));
         //return $things1;
         }else{
             return redirect()->route('editar_perfil');//perfil
+        }
+    }
+
+    /**
+     * Carga dinamicamente los articulos segun intereses
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function pagination($pagina)
+    {
+        //intereses
+        if(auth()->user()->user_state>'1'){
+        $interest = Interest::where('user_id', auth()->user()->id)->where('interest_type', 1)->get('category_id');
+        $interestSec = Interest::where('user_id', auth()->user()->id)->where('interest_type', 2)->get('category_id');
+        //return $interest[0]->id;
+        //fin intereses
+        $things=[];
+            if($pagina==2){
+                //sacar publicaciones interes secundario
+                $things = Thing::latest('thing.created_at')
+                ->join('post', 'thing.post_id', '=', 'post.id')
+                ->join('users', 'post.user_id', '=', 'users.id')
+                ->where('thing.thing_state', '<', '4')
+                ->where('thing.category_id', $interestSec[0]->category_id)
+                ->orWhere('thing.category_id', $interestSec[1]->category_id)
+                ->orderBy('thing.thing_id', 'DESC')->get();
+                //fin sacar publicaciones interes secundario
+            }
+            if($pagina==3){
+                //sacar publicaciones cercanas
+                $things = Thing::latest('thing.created_at')
+                ->join('post', 'thing.post_id', '=', 'post.id')
+                ->join('users', 'post.user_id', '=', 'users.id')
+                ->where('thing.thing_state', '<', '4')
+                ->where('thing.ubication', auth()->user()->ubication)
+                ->orderBy('thing.thing_id', 'DESC')->get();
+                //fin sacar publicaciones cercanas
+            }
+            if($pagina==4){
+                //sacar todas las publicaciones
+                $things = Thing::latest('thing.created_at')
+                ->join('post', 'thing.post_id', '=', 'post.id')
+                ->join('users', 'post.user_id', '=', 'users.id')
+                ->where('thing.thing_state', '<', '4')
+                //->where('thing.thing_state', 1)
+                ->orderBy('thing.thing_id', 'DESC')->get();
+                //fin sacar todas las publicaciones
+            }
+
+        $thing_status=Lista::THING_STATUS;
+        $ubication = Lista::UBICATION;
+        $thing_state=Lista::THING_STATE;
+        $category_list=Lista::CATEGORY;
+        return view('feed_pagination', compact('things','thing_status','ubication','thing_state','category_list'));
         }
     }
 

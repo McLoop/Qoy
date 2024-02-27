@@ -1,12 +1,5 @@
-@include('head.head')
-@include('partials.message')
-<div class="container-content-page container-back">
-	<div class="row">
-		<div class="col-sm-3 col-md-3"></div>
-		<div class="col-sm-6 col-md-6">
-			<h6>Publicaciones en esta categoria</h6><br>
-			<!-- Inicio publicaciones -->
-@forelse($things1 as $thing)
+<!-- Inicio publicaciones -->
+@forelse($things as $thing)
 <div class="container">
 	<div class="food-card food-card--vertical">
 		<div class="food-card_img">
@@ -48,16 +41,6 @@
 	</div>
 </div>
 @empty
-	<h6 class="message_h">No hay publicaciones en esta categoria</h6><br>
+	<h6 class="message_h"></h6><br>
 @endforelse
 <!-- Fin publicaciones -->
-		</div>
-		<div class="col-sm-3 col-md-3"></div>
-	</div>
-	
-
-	<br><br>
-</div>
-
-@include('footer.footer')
-

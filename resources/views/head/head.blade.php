@@ -41,6 +41,6 @@
       <div></div>
       <div></div>
     </div>
-    <div class="page">
+    <div class="page" id="contenido-feed">
       <!-- Page Header-->
       @include('header.header')

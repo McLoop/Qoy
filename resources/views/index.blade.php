@@ -89,8 +89,11 @@
                       </li>
                       <li class="rd-nav-item"><a class="rd-nav-link text-theme text-a-no-hover" href="#info2">¿Qué hacemos?</a>
                       </li>
-                      <li class="rd-nav-item"><a class="rd-nav-link text-theme text-a-no-hover" href="#info3">Unete</a>
+                      <li class="rd-nav-item"><a class="rd-nav-link text-theme text-a-no-hover" href="#info3">Nosotros</a>
                       </li>
+                      <li class="rd-nav-item"><a class="rd-nav-link text-theme text-a-no-hover" href="#info4">Unete</a>
+                      </li>
+
                     </ul>
                   </div>
                 </div>
@@ -115,10 +118,12 @@
             <h3 class="text-primary-yellow"><strong>Bienvenido a Qoy</strong></h3><br>
             <h5 class="text-theme">Qoy es un movimiento sin fines de lucro de personas que dan y reciben cosas gratis incentivando a reutilizar y donar articulos en buen estado, brinando ayuda a quien lo necesita y recibiendola de quien la ofrece. Ahora con una cuenta puedes compartir y recibir articulos de todo tipo totalmente gratis. <a href="{{ route('register')}}">Registrarse ahora.</a></h5>
           </div>
-          <div class="col-sm-3 col-md-3"></div>
+          <div class="col-sm-3 col-md-3">
+          </div>
         </div>
       </div>
       </section>
+
       <section id="info2">
         <div class="row">
           <div class="col-sm-3 col-md-3"></div>
@@ -136,7 +141,24 @@
           <div class="col-sm-3 col-md-3"></div>
         </div>
       </section>
+
       <section id="info3">
+        <div class="row">
+          <div class="col-sm-3 col-md-3"></div>
+          <div class="cuadro-centro col-sm-4 col-md-6">
+            <h3 class="text-primary-yellow"><strong>Nosotros</strong></h3><br>
+            <h6 class="text-theme">Qoy cuenta con una comunidad que aporta y recibe, siempre pensando en los usuarios.</h6><br>
+            <h4 class="text-primary-yellow"><strong><i class="fas fa-user"></i>&nbsp;5</strong></h4>
+            <h4><strong>Usuarios registrados</strong></h4>
+            <h4 class="text-primary-yellow"><strong><i class="fas fa-check-circle"></i>&nbsp;36</strong></h4>
+            <h4><strong>Articulos publicados</strong></h4><br>
+            <h4 class="text-primary-yellow"><strong>Se parte de nosotros.</strong></h4>
+          </div>
+          <div class="col-sm-3 col-md-3"></div>
+        </div>
+      </section>
+
+      <section id="info4">
         
         <div class="row">
           <div class="cuadro-centro col-sm-12 col-md-12 col-lg-12">
