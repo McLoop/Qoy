@@ -4,11 +4,8 @@
 <div class="row">
 	<div class="col-sm-3 col-md-3"></div>
 	<div class="col-sm-6 col-md-6">
-		<h5></h5>
-
 		<h6 class="message_h">Los intereses se basan en nuestras categorias, con las mismas se categorizan las publicaciones, recibiras una notificación cada que se publiquen articulos en las categorias primarias que selecciones.</h6>
-		<a type="button" href="{{ route('editar_intereses', [auth()->user()->id,'secundarios']) }}" class="form-control btn-sig btn-primary-yellow text-a-white text-a-no-hover-white">Siguiente</a>
-		<br><h6>Edita tus 2 interes primarios:</h6><br>
+        <br><h6>Edita tus 2 interes primarios:</h6><br>
         <div>
         	@if($interest->isEmpty())
 			<h6 class="message_h">No tienes intereses aún.</h6><br>				
@@ -28,12 +25,14 @@
 		            <input type="text" hidden="true" name="user" value="{{auth()->user()->id}}">
 		            <button type="submit" id="interestButton" disabled="true" class="form-control btn-primary-yellow">Guardar intereses</button><br><br>
 	            </form>
+
 			@endif
-	            
+	        <a type="button" href="{{ route('editar_intereses', [auth()->user()->id,'secundarios']) }}" class="form-control btn-sig btn-primary-yellow text-a-white text-a-no-hover-white">Siguiente</a>
+			<a type="button" href="{{route('editar_perfil')}}" class="form-control btn-sig btn-primary-yellow text-a-white text-a-no-hover-white">Cancelar</a>
+        </div>
         </div>
 	</div>
 	<div class="col-sm-3 col-md-3"></div>
-</div>
 </div>
 
 @include('footer.footer')

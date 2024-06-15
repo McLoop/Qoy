@@ -8,12 +8,47 @@
         <h6 class="message_h">Intentamos agregar categorias lo mas frecuente posible, todo para brindarte una mejor experiencia.</h6>
         <br><br>
         @forelse($category as $categoria)
-            <div class="datos-row-father">
+            <!-- inicio Card categoria -->
+          <div class="inner-card-container">
+            <div class="bizzy-card-container">
+
+              <div class="biz-card-a">
+                <div class="biz-headshot">
+                    <img src="{{isset($categoria->category_name) ? Storage::url("images/categorias/".$categoria->category_name.".png") : Storage::url("images/categorias/categoriaDefault.png")}}" alt="">
+                  <div class="biz-words-container">
+                    <div class="biz-name"></div>
+                    <div class="biz-title"></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="biz-card-b">
+                <div class="biz-shape">
+                  <div class="biz-contact-box">
+
+                    <div class="biz-cell">
+                      <h6><a href="{{ route('mostrar_categoria', $categoria->id) }}"><strong>{{$categoria->category_name}}</strong></a></h6>
+                    </div>
+
+
+                  </div>
+                  <!--biz-contact-box-->
+                </div>
+                <!--biz-shape-->
+              </div>
+
+            </div>
+            <!--bizzy-card-container-->
+          </div><br>
+      <!--inner-card-container-->
+            <!-- fin card categoria -->
+
+            <!--<div class="datos-row-father">
                 <div class="datos-row-category">
                     <h6 class="item-name"><strong>{{$categoria->category_name}}</strong></h6>
                     <a class="delete-item-th" href="{{ route('mostrar_categoria', $categoria->id) }}"><i class="icon-green fas fa-chevron-right fa-lg"></i></a>
                 </div>
-            </div>
+            </div>-->
             @empty
             <br>
                 <h6 class="message_h">Aún no tienes articulos en esta publicación.</h6>

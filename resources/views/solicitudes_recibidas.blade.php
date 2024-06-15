@@ -25,7 +25,7 @@
             </div>
             @empty
             <br>
-                <h6 class="message_h">Aún no tienes articulos en esta publicación.</h6>
+                <h6 class="message_h">Aún no tienes solicitudes, prueba publicando un articulo.</h6>
             @endforelse
             <br><br>
     </div>

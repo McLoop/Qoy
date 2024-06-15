@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\models\Interest;
+use App\Http\Controllers\Lista;
 use App\models\Thing;
 use App\models\Category;
 use Illuminate\Http\Request;
@@ -35,8 +36,10 @@ class CategoryController extends Controller
         ->join('users', 'post.user_id', '=', 'users.id')
         ->where('thing.category_id', $idCategoria)
         ->orderBy('thing.thing_id', 'DESC')->get();
+        $thing_state=Lista::THING_STATE;
+        
         //fin sacar publicaciones interes primario
-        return view('mostrar_categoria', compact('things1'));
+        return view('mostrar_categoria', compact('things1','thing_state'));
         //return $things1;
         
     }

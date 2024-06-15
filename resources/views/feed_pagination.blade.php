@@ -32,7 +32,7 @@
 						<a class="" href="{{ route('ver_articulo', $thing->thing_id) }}"><h6 class="text-primary-yellow">Ver articulo</h6></a>
 					</div>
 					<div class="pull-right">
-			            <span class="badge bg-success">Veg</span>
+			            <span class="badge bg-success">{{ $thing_state[$thing->thing_state] }}</span>
 			        </div>
 					
 				</div>

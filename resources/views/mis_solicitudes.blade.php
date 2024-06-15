@@ -6,7 +6,7 @@
     <div class="col-sm-6 col-md-6">
         <h6>Estas son todos las solicitudes que realizaste</h6>
         <h6 class="message_h">Se listan todas las solicitudes realizadas por ti, incluidas las incompletas, enviadas, aceptadas, etc.</h6>
-        <h6 class="message_h">Si un articulo fue eliminado o ya fue entregado no podras editar la solicitud, pero se seguira mostrando como enviado.</h6>
+        <h6 class="message_h">Si un articulo fue <strong>eliminado</strong> o ya fue entregado no podras editar la solicitud, pero se seguira mostrando como <strong>enviado.</strong></h6>
         <br><br>
         <h6>Articulo - Enviado el - Estado</h6>
         @forelse($requests as $request)
@@ -28,7 +28,7 @@
             </div>
             @empty
             <br>
-                <h6 class="message_h">Aún no tienes articulos en esta publicación.</h6>
+                <h6 class="message_h">Aún no mandaste solicitudes para adquirir articulos.</h6>
             @endforelse
             <br><br>
     </div>

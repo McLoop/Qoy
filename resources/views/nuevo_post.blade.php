@@ -43,7 +43,10 @@
 					@endif
 
 					@if($thing->thing_state==1)
-					<div class="col-sm-4 col-md-4"></div>
+					<div class="col-sm-4 col-md-4">
+						<a type="button" class="form-control btn-add btn-primary-yellow text-a-white text-a-no-hover-white" href="{{route('publicaciones_propias')}}">Cancelar</a>
+						
+					</div>
 					<div class="col-sm-4 col-md-4">
 						<a type="button" class="form-control btn-add btn-primary-yellow text-a-white text-a-no-hover-white" href="{{ route('eliminar_post',$idPost) }}">Eliminar</a>
 					</div>
