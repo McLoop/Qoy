@@ -4,7 +4,7 @@
 	<div class="food-card food-card--vertical">
 		<div class="food-card_img">
 			<img src="{{isset($thing->photo) ? Storage::url("$thing->photo") : Storage::url("images/articulos/defaultArticulo.jpg")}}" alt="">
-			<a href="#!"><i class="fa fa-heart"></i></a>
+			<a href="{{ route('nueva_solicitud', $thing->thing_id) }}"><i class="fa fa-plus"></i></a>
 		</div>
 	<div class="food-card_content">
 		<div class="food-card_title-section">
@@ -29,12 +29,14 @@
 			<hr>
 				<div class="space-between">
 					<div class="food-card_price">
-						<a class="" href="{{ route('ver_articulo', $thing->thing_id) }}"><h6 class="text-primary-yellow">Ver articulo</h6></a>
-					</div>
+						<a class="" href="{{ route('ver_articulo', $thing->thing_id) }}"><h6 class="text-primary-yellow">Detalles</h6></a>
+					</div>&nbsp;&nbsp;
 					<div class="pull-right">
-			            <span class="badge bg-success">{{ $thing_state[$thing->thing_state] }}</span>
-			        </div>
-					
+					    <span class="badge bg-info">{{ $thing_status[$thing->status] }}</span>
+					</div>&nbsp;
+					<div class="pull-right">
+					    <span class="badge bg-success">{{ $thing_state[$thing->thing_state] }}</span>
+					</div>
 				</div>
 			</div>
 		</div>

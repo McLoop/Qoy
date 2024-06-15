@@ -62,7 +62,7 @@
         <img class="img-articulo" src="{{isset($thing->photo) ? Storage::url("$thing->photo") : Storage::url("images/articulos/defaultArticulo.jpg")}}" alt="">
         <br><br>
         <div class="datos-row">
-            <a type="button" href="{{ route('nueva_solicitud', $thing->thing_id) }}" class="form-control btn-primary-yellow text-a-no-hover-black"><i class="fas fa-user-plus fa-lg"></i>&nbsp;Solicitar este artículo</a>
+            <a type="button" href="{{ route('nueva_solicitud', $thing->thing_id) }}" class="form-control btn-primary-yellow text-a-no-hover-black"><i class="fas fa-user-plus fa-lg"></i>&nbsp;Solicitar</a>
         </div><br><br>
 	</div>
 	<div class="col-sm-2 col-md-2"></div>

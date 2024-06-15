@@ -113,7 +113,7 @@ class Lista {
                 0=>'Nuevo',
                 1=>'En buen estado',
                 2=>'Usado',
-                3=>'Un poco desgastado',
+                3=>'Casi desgastado',
                 4=>'Desgastado',
                 5=>'En mal estado',
                 6=>'Regular'
@@ -121,8 +121,8 @@ class Lista {
 
         const THING_STATE = array(
                 0=>'En espera',
-                1=>'Publicado',
-                2=>'Entrega en proceso',
+                1=>'Disponible',
+                2=>'Solicitado',
                 3=>'Entregado',
                 4=>'Eliminado',
         );

@@ -35,11 +35,13 @@ class CategoryController extends Controller
         ->join('post', 'thing.post_id', '=', 'post.id')
         ->join('users', 'post.user_id', '=', 'users.id')
         ->where('thing.category_id', $idCategoria)
+        ->where('thing.thing_state','!=', 4)
         ->orderBy('thing.thing_id', 'DESC')->get();
         $thing_state=Lista::THING_STATE;
+        $thing_status=Lista::THING_STATUS;
         
         //fin sacar publicaciones interes primario
-        return view('mostrar_categoria', compact('things1','thing_state'));
+        return view('mostrar_categoria', compact('things1','thing_state','thing_status'));
         //return $things1;
         
     }
