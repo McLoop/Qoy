@@ -58,7 +58,7 @@
         <br><br>
                 <h6 class="message_h">Este usuario aún no tiene insignias.</h6>
                 <br><br>
-
+    <a type="button" href="{{route('editar_perfil')}}" class="form-control btn-primary-yellow text-a-white text-a-no-hover-white">&nbsp;Volver al perfil</a><br>
 	</div>
 	<div class="col-sm-2 col-md-2"></div>
 </div>

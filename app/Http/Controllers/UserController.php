@@ -91,7 +91,7 @@ class UserController extends Controller
             $interestSec = Interest::where('user_id', $user_id)->where('interest_type', 2)->get();
 
             if ($type=='primarios') {
-                return view('editar_interest', compact('interest', 'category'));
+                return view('editar_interest', compact('interest', 'category','interestSec'));
             } else if ($type=='secundarios'){
                 return view('editar_interest_secundario', compact('interest', 'category','interestSec'));
             }
@@ -138,7 +138,7 @@ class UserController extends Controller
         Interest::where('id', $interest[0]->id)
         ->update(['category_id'=>request('primario1')]);
         Interest::where('id', $interest[1]->id)
-        ->update(['category_id'=>request('primario1')]);
+        ->update(['category_id'=>request('primario2')]);
         return redirect()->route('editar_intereses', [auth()->user()->id,'secundarios']);
     }
 

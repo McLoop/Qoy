@@ -7,7 +7,7 @@
 		<h5></h5>
 
 		<h6 class="message_h">Los intereses se basan en nuestras categorias, con las mismas se categorizan las publicaciones, recibiras una notificación cada que se publiquen articulos en las categorias primarias que selecciones.</h6>
-            <a type="button" href="{{route('editar_perfil')}}" class="form-control btn-sig btn-primary-yellow text-a-white text-a-no-hover-white">&nbsp;Cancelar</a>
+            <a type="button" href="{{route('editar_perfil')}}" class="form-control btn-sig btn-primary-yellow text-a-white text-a-no-hover-white">&nbsp;Omitir</a>
         
 		<br><h6>Edita tus 2 intereses secundarios:</h6><br>
 		
