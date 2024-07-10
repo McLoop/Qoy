@@ -7,14 +7,16 @@ class Lista {
 		0=>'Invitado',                // Usuario sin logear
 		1=>'Nuevo Usuario',           // Usuario sin publicar nada
                 2=>'Usuario Recurrente',      // Usuario despues de 1 publi
-                3=>'Cuenta de Empresa'        // Cuenta de empresa
+                3=>'Cuenta de Empresa',       // Cuenta de empresa
+                4=>'En espera'                // Cuenta en espera de ser aprobado para empresa
 	);
 
 	const USER_TYPES_MESSAGE = array(
 		0=>'Todos los nuevos usuarios son invitados hasta que completan su perfil añadiendo una ubicación.',
 		1=>'Seras NUEVO USUARIO hasta que compartas tu primera publicación o solicites propiedad de algun objeto.',
                 2=>'USUARIO RECURRENTE significa que eres un usuario que comparte y solicita con frecuencia dentro de Qoy, esto significa algo bueno para los demas usuarios que visiten tu perfil.',
-                3=>'Tu perfil esta registrado como cuenta de empresa, tendras distintos beneficios que puedes consultar en los terminos y condiciones.'
+                3=>'Tu perfil esta registrado como cuenta de empresa, tendras distintos beneficios que puedes consultar en los terminos y condiciones.',
+                4=>'Tu perfil esta en espera de ser aprobado como EMPRESA.'
 	);
 
 	const USER_STATUS = array(
@@ -22,7 +24,7 @@ class Lista {
 		1=>'Casi completa',   // Usuario con perfil en proceso
                 2=>'Activa',          // Usuario con perfil terminado
                 3=>'Inactiva',        // Eliminacion logica de usuario
-                4=>'Seguro',	      // Usuario con datos personales
+                4=>'Segura',	      // Usuario con datos personales
                 5=>'Inhabilitado'     // Usuario inhabilitado por faltas
 	);
 

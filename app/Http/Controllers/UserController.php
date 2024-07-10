@@ -56,9 +56,12 @@ class UserController extends Controller
         $ubicacion = Ubication::where('ubication_status', 1)->get();
         if (auth()->user()->user_state==0) {
             toast('Primero debes configurar tu perfil','info');
-        } else {
+        } else {}
+        if (auth()->user()->user_type==4) {
+            alert('EN ESPERA','Mientras se aprueba tu solicitud de cambio, tu perfil aparecera "en espera", puedes usar todas las funciones de Qoy con normalidad.','info');
+        } else {}
             
-        }
+
         $user_types = Lista::USER_TYPES;
         $user_types_message = Lista::USER_TYPES_MESSAGE;
         $user_message = Lista::USER_MESSAGE;
@@ -144,14 +147,36 @@ class UserController extends Controller
     }
 
     /**
+     * Muestra la vista para cambiar a Empresa.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function editPerfilType()
+    {
+        //sacamos las ubicaiones de bdd
+        alert('CAMBIAR A EMPRESA','Lee los terminos y condiciones antes de proceder a un cambio de cuenta.','info');
+        return view('perfil_empresa');
+    }
+
+    /**
      * Cambia una cuenta a empresarial.
      *
      * @return \Illuminate\Http\Response
      */
-    public function editPerfilType($user_id)
+    public function setPerfilType($user_id, $type)
     {
         //sacamos las ubicaiones de bdd
-        User::where('id', $user_id)->update(['user_type'=>4]);
+        if($type == 'solicitud'){
+            User::where('id', $user_id)->update(['user_type'=>4]);
+            return redirect()->route('editar_perfil');
+        }
+        if($type == 'cambioEmpresa'){
+            User::where('id', $user_id)->update(['user_type'=>3]);
+            //cambiar para admin
+            return redirect()->route('editar_perfil');
+
+        }
+
         //return redirect()->route('editar_intereses', [auth()->user()->id,'secundarios']);
     }
 
