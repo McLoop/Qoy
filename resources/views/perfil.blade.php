@@ -64,6 +64,11 @@
         <div class="datos-row">
             <a type="button" href="{{ route('user_perfil', auth()->user()->id) }}" class="form-control btn-primary-yellow text-a-no-hover-black"><i class="fas fa-eye fa-lg"></i>&nbsp;Ver como</a>
         </div>
+        @if(auth()->user()->user_type != 4)
+            <div class="datos-row">
+                <a type="button" href="{{ route('editar_intereses', [auth()->user()->id,'primarios']) }}" class="form-control btn-primary-yellow text-a-no-hover-black">&nbsp;Cambiar a empresarial</a>
+            </div>
+        @endif
         @if(auth()->user()->user_state >= 1)
             <div class="datos-row">
                 <a type="button" href="{{ route('editar_intereses', [auth()->user()->id,'primarios']) }}" class="form-control btn-primary-yellow text-a-no-hover-black"><i class="fas fa-tasks fa-lg"></i>&nbsp;Mis intereses</a>

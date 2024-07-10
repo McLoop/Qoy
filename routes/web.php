@@ -29,9 +29,15 @@ Route::view('/terminos', 'terminos')->name('terminos');
 
 //perfil y usuarios
 Route::get('/perfil/inicio', 'App\Http\Controllers\UserController@setPerfil')->name('editar_perfil')->middleware('auth');
+// Editar intereses del perfil
 Route::get('/perfil/intereses/{user_id}/{type}', 'App\Http\Controllers\UserController@setPerfilInterest')->name('editar_intereses')->middleware('auth');
+// Cambiar a cuenta empresarial
+Route::get('/perfil/empresarial/{user_id}', 'App\Http\Controllers\UserController@editPerfilType')->name('cambiar_empresa')->middleware('auth');
+// Perfil Ver Como
 Route::get('/perfil/usuario/{user_id}', 'App\Http\Controllers\UserController@show')->name('user_perfil')->middleware('auth');
+// Guardar datos de registro de un perfil
 Route::post('/perfil/inicio', 'App\Http\Controllers\UserController@store')->name('usuario_register');
+// Guardar datos de ubicacion de un perfil
 Route::post('/perfil/ubication', 'App\Http\Controllers\UserController@setUbication')->name('user_ubication');
 Route::post('/login/qoy', 'App\Http\Controllers\UserController@loginNormal')->name('login_qoy');
 Route::post('/perfil/intereses_guardar/', 'App\Http\Controllers\UserController@setPerfilPrimaryInterest')->name('guardar_intereses_primario')->middleware('auth');

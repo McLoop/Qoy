@@ -102,6 +102,7 @@ class UserController extends Controller
         
     }
 
+
     /**
      * Guarda los intereses primarios de un perfil.
      *
@@ -140,6 +141,18 @@ class UserController extends Controller
         Interest::where('id', $interest[1]->id)
         ->update(['category_id'=>request('primario2')]);
         return redirect()->route('editar_intereses', [auth()->user()->id,'secundarios']);
+    }
+
+    /**
+     * Cambia una cuenta a empresarial.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function editPerfilType($user_id)
+    {
+        //sacamos las ubicaiones de bdd
+        User::where('id', $user_id)->update(['user_type'=>4]);
+        //return redirect()->route('editar_intereses', [auth()->user()->id,'secundarios']);
     }
 
     /**

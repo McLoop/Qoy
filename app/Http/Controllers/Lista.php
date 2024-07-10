@@ -4,33 +4,41 @@ namespace App\Http\Controllers;
 class Lista {
 
 	const USER_TYPES = array(
-		0=>'Invitado',
-		1=>'Nuevo Usuario',
-                2=>'Usuario Recurrente'
+		0=>'Invitado',                // Usuario sin logear
+		1=>'Nuevo Usuario',           // Usuario sin publicar nada
+                2=>'Usuario Recurrente',      // Usuario despues de 1 publi
+                3=>'Cuenta de Empresa'        // Cuenta de empresa
 	);
 
 	const USER_TYPES_MESSAGE = array(
 		0=>'Todos los nuevos usuarios son invitados hasta que completan su perfil añadiendo una ubicación.',
 		1=>'Seras NUEVO USUARIO hasta que compartas tu primera publicación o solicites propiedad de algun objeto.',
-                2=>'USUARIO RECURRENTE significa que eres un usuario que comparte y solicita con frecuencia dentro de Qoy, esto significa algo bueno para los demas usuarios que visiten tu perfil.'
+                2=>'USUARIO RECURRENTE significa que eres un usuario que comparte y solicita con frecuencia dentro de Qoy, esto significa algo bueno para los demas usuarios que visiten tu perfil.',
+                3=>'Tu perfil esta registrado como cuenta de empresa, tendras distintos beneficios que puedes consultar en los terminos y condiciones.'
 	);
 
 	const USER_STATUS = array(
-		0=>'Incompleta', // Usuario sin perfil terminado
-		1=>'Casi completa',// Usuario con perfil en proceso
-                2=>'Activa',     // Usuario con perfil terminado
-                3=>'Inactiva',   // Eliminacion logica de usuario
-                4=>'Seguro',	 // Usuario con datos personales
-                5=>'Inhabilitado'// Usuario inhabilitado por faltas
+		0=>'Incompleta',      // Usuario sin perfil terminado
+		1=>'Casi completa',   // Usuario con perfil en proceso
+                2=>'Activa',          // Usuario con perfil terminado
+                3=>'Inactiva',        // Eliminacion logica de usuario
+                4=>'Seguro',	      // Usuario con datos personales
+                5=>'Inhabilitado'     // Usuario inhabilitado por faltas
 	);
 
 	const USER_MESSAGE = array(
-		0=>'Esta cuenta esta recien creada, el perfil no termino de configurarse correctamente.', // Usuario sin perfil terminado
-                1=>'Esta cuenta esta proceso de completar su perfil.',     // Usuario con perfil terminado
-                2=>'Esta cuenta esta actualmente activa, puede publicar y solicitar propiedad en Qoy.',     // Usuario con perfil terminado
-                3=>'Esta cuenta esta actualmente inactiva por peticion del usuario.',   // Eliminacion logica de usuario
-                4=>'Esta cuenta esta es segura dado que Qoy tiene los datos personales de este usuario.',   // Eliminacion logica de usuario
-                5=>'Este cuenta fue deshabilitada por ir en contra de los terminos y condiciones de Qoy.'		 // Usuario con datos personales
+		0=>'Esta cuenta esta recien creada, el perfil no termino de configurarse correctamente.', 
+                // Usuario sin perfil terminado
+                1=>'Esta cuenta esta proceso de completar su perfil.',     
+                // Usuario con perfil terminado
+                2=>'Esta cuenta esta actualmente activa, puede publicar y solicitar propiedad en Qoy.',     
+                // Usuario con perfil terminado
+                3=>'Esta cuenta esta actualmente inactiva por peticion del usuario.',   
+                // Eliminacion logica de usuario
+                4=>'Esta cuenta esta es segura dado que Qoy tiene los datos personales de este usuario.',   
+                // Perfil con todo terminado y datos adicionales como ci
+                5=>'Este cuenta fue deshabilitada por ir en contra de los terminos y condiciones de Qoy.'		 
+                // Cuenta suspendida por un administrador
 	);
 
 	const REGION = array(
