@@ -5,7 +5,7 @@
 		<div class="col-sm-3 col-md-3"></div>
 		<div class="col-sm-6 col-md-6">
 			<h6>Editar artículo</h6>
-			<h6 class="message_h">Este artículo sera añadido a tu publicacion actual.</h6><br>
+			<h6 class="message_h">Los datos de este artículo seran actualizados en tu publicacion actual.</h6><br>
 			<form method="post" action="{{route('modificar_articulo')}}" enctype="multipart/form-data" autocomplete="off">
 			@csrf
 			<input type="text" hidden="true" value="{{$idPost}}" name="idPost">
@@ -65,13 +65,12 @@
                     </select>
                 </div>
 			
-			<p class="text-theme">Al registrarte aceptas nuestros <a href="">terminos y condiciones.</a></p>
 			<div class="row">
 				<div class="col-sm-6 col-md-6">
 					<a type="button" class="form-control btn-add btn-primary-yellow text-a-white text-a-no-hover-white" href="{{ route('editar_post',$idPost) }}">Cancelar</a>
 				</div>
 				<div class="col-sm-6 col-md-6">
-					<button type="submit" class="form-control btn-add btn-primary-yellow">Editar artículo</button>
+					<button type="submit" class="form-control btn-add btn-primary-yellow">Guardar cambios</button>
 				</div>
 			</div>
 			@empty

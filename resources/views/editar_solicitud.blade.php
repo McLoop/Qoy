@@ -26,7 +26,7 @@
             </div>
             @empty
             @endforelse
-            <button type="submit" class="form-control btn-primary-yellow">Editar</button>
+            <button type="submit" class="form-control btn-primary-yellow">Guardar cambios</button>
         </form>
         <br><br>
     </div>

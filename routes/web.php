@@ -25,7 +25,11 @@ Route::view('/qoy', 'index')->name('index')->middleware('guest');
 Route::view('/login', 'login')->name('login')->middleware('guest');
 Route::view('/register', 'register')->name('register')->middleware('guest');
 Route::view('/terminos', 'terminos')->name('terminos');
+//administrador 
+Route::get('/post/all/', 'App\Http\Controllers\AdminController@showPosts')->name('publicaciones_qoy')->middleware('auth');
 
+
+//fin administrador
 
 //perfil y usuarios
 Route::get('/perfil/inicio', 'App\Http\Controllers\UserController@setPerfil')->name('editar_perfil')->middleware('auth');

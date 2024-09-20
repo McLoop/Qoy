@@ -82,6 +82,7 @@ class PostController extends Controller
         return view('mis_posts', compact('posts','POST_STATE'));
     }
 
+
     /**
      * Display the specified resource.
      *

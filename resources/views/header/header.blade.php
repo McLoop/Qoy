@@ -82,19 +82,28 @@
                     <div>
                       <div class="row gutters-20">
                         <div class="col-12">
-                          <!-- Thumbnail Creative-->
-                          <ul>
-                            <li class="rd-nav-item li-menu-der"><a hidden="true" href="#">Opciones</a></li>
-                            <li class="rd-nav-item li-menu-der"><a href="{{route('editar_perfil')}}">Tu perfil</a></li>
-                            <li class="rd-nav-item li-menu-der"><a href="{{route('publicaciones_propias')}}">Tus publicaciones</a></li>
-                            <li class="rd-nav-item li-menu-der"><a href="{{route('solicitudes_enviadas')}}">Solicitudes enviadas</a></li>
-                            <li class="rd-nav-item li-menu-der"><a href="{{route('solicitudes_recibidas')}}">Solicitudes recibidas</a></li>
-                            <li class="rd-nav-item li-menu-der"><a href="{{route('terminos')}}">Términos y condiciones.</a></li>
-                            <li class="rd-nav-item li-menu-der"><a href="{{ route('logout') }}">Cerrar Sesión</a></li>
-                          </ul>
+                          <!-- Inicio Menu Lateral-->
+                          <!-- Menu Admin-->
+                          @if(auth()->user()->user_type==5)
+                            <ul>
+                              <li class="rd-nav-item li-menu-der"><a hidden="true" href="#">Opciones</a></li>
+                              <li class="rd-nav-item li-menu-der"><a href="{{route('publicaciones_qoy')}}">Publicaciones</a></li>
+                              <li class="rd-nav-item li-menu-der"><a href="{{ route('logout') }}">Cerrar Sesión</a></li>
+                            </ul>
+                          @else
+                            <ul>
+                              <li class="rd-nav-item li-menu-der"><a hidden="true" href="#">Opciones</a></li>
+                              <li class="rd-nav-item li-menu-der"><a href="{{route('editar_perfil')}}">Tu perfil</a></li>
+                              <li class="rd-nav-item li-menu-der"><a href="{{route('publicaciones_propias')}}">Tus publicaciones</a></li>
+                              <li class="rd-nav-item li-menu-der"><a href="{{route('solicitudes_enviadas')}}">Solicitudes enviadas</a></li>
+                              <li class="rd-nav-item li-menu-der"><a href="{{route('solicitudes_recibidas')}}">Solicitudes recibidas</a></li>
+                              <li class="rd-nav-item li-menu-der"><a href="{{route('terminos')}}">Términos y condiciones.</a></li>
+                              <li class="rd-nav-item li-menu-der"><a href="{{ route('logout') }}">Cerrar Sesión</a></li>
+                            </ul>
+                          @endif
                         </div>
                         <div class="col-6">
-                          <!-- Thumbnail Creative-->
+                          <!-- Fin Menu Lateral-->
                           
                         </div>
                       </div>

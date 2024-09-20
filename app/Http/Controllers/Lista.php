@@ -8,7 +8,8 @@ class Lista {
 		1=>'Nuevo Usuario',           // Usuario sin publicar nada
                 2=>'Usuario Recurrente',      // Usuario despues de 1 publi
                 3=>'Cuenta de Empresa',       // Cuenta de empresa
-                4=>'En espera'                // Cuenta en espera de ser aprobado para empresa
+                4=>'En espera',               // Cuenta en espera de ser aprobado para empresa
+                5=>'Administrador'            // Cuenta de administrador de Qoy
 	);
 
 	const USER_TYPES_MESSAGE = array(
@@ -16,7 +17,8 @@ class Lista {
 		1=>'Seras NUEVO USUARIO hasta que compartas tu primera publicación o solicites propiedad de algun objeto.',
                 2=>'USUARIO RECURRENTE significa que eres un usuario que comparte y solicita con frecuencia dentro de Qoy, esto significa algo bueno para los demas usuarios que visiten tu perfil.',
                 3=>'Tu perfil esta registrado como cuenta de empresa, tendras distintos beneficios que puedes consultar en los terminos y condiciones.',
-                4=>'Tu perfil esta en espera de ser aprobado como EMPRESA.'
+                4=>'Tu perfil esta en espera de ser aprobado como EMPRESA.',
+                5=>'Eres el admin de Qoy.'
 	);
 
 	const USER_STATUS = array(
