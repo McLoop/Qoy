@@ -35,12 +35,16 @@ class UserController extends Controller
     {
         $user=User::where('email',request('usuario'))->get();
         $user=$user->get(0);
-        if (Hash::check(request('password'), $user->password)) {
-            auth()->login($user, false);
-            alert()->success('No olvides configurar tu perfil', 'Login con exito');
-            return redirect()->route('editar_perfil');
-        }else{
-            return redirect()->route('login')->with('info', 'Credenciales incorrectas, vuelve a intentarlo.');;
+        if (empty($user)) {
+            return redirect()->route('login')->with('info','No hay un usuario registrado con este correo.');
+        } else {
+            if (Hash::check(request('password'), $user->password)) {
+                auth()->login($user, false);
+                alert()->success('No olvides configurar tu perfil', 'Login con exito');
+                return redirect()->route('editar_perfil');
+            }else{
+                return redirect()->route('login')->with('info','Credenciales incorrectas, vuelve a intentarlo.');
+            }
         }
         //return $user;
     }

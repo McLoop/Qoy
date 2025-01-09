@@ -59,4 +59,12 @@
             </div>
           </nav>
         </div>
+        <div class="card-body">
+        @if (session('info'))
+            <div class="bg-success" role="alert">
+            </div>
+        @endif
+                {{ __('You are logged in!') }}
+        
+        </div>
       </header>
