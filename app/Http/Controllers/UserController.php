@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\ViewErrorBag;
 use App\Http\Controllers\Lista;
 use Illuminate\Support\Facades\Auth;
 use App\models\User;
@@ -32,14 +33,22 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function loginNormal(Request $request)
-    {
+    {   
+        /*Validacion*/
+        $request->validate([
+            'usuario' => ['required', 'email'],
+            'password' => ['required', 'min:5'],
+        ]);
+        /*Validacion*/
+
         $user=User::where('email',request('usuario'))->get();
         $user=$user->get(0);
         if (empty($user)) {
             return redirect()->route('login')->with('info','No hay un usuario registrado con este correo.');
         } else {
             if (Hash::check(request('password'), $user->password)) {
-                auth()->login($user, false);
+                $recuerdame = request()->filled('recordar');
+                auth()->login($user, $recuerdame);
                 alert()->success('No olvides configurar tu perfil', 'Login con exito');
                 return redirect()->route('editar_perfil');
             }else{

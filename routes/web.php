@@ -21,15 +21,22 @@ Route::get('/', function () {
 
 Route::view('/qoy', 'index')->name('index')->middleware('guest');
 
-//login y regstro views
+//login y registro views
 Route::view('/login', 'login')->name('login')->middleware('guest');
 Route::view('/register', 'register')->name('register')->middleware('guest');
 Route::view('/terminos', 'terminos')->name('terminos');
+//login qoy
+Route::post('/login/qoy', 'App\Http\Controllers\UserController@loginNormal')->name('login_qoy');
+//login con google y facebook
+Route::get('/auth/redirect/{provider}', 'App\Http\Controllers\GoogleLoginController@redirect');
+Route::get('/callback/{provider}', 'App\Http\Controllers\GoogleLoginController@callback');
+Route::get('/logout', 'App\Http\Controllers\GoogleLoginController@logout')->name('logout');
+//fin login 
+
 //administrador 
 Route::get('/post/all/', 'App\Http\Controllers\AdminController@showPosts')->name('publicaciones_qoy')->middleware('auth');
-
-
 //fin administrador
+
 
 //perfil y usuarios
 Route::get('/perfil/inicio', 'App\Http\Controllers\UserController@setPerfil')->name('editar_perfil')->middleware('auth');
@@ -45,7 +52,7 @@ Route::get('/perfil/usuario/{user_id}', 'App\Http\Controllers\UserController@sho
 Route::post('/perfil/inicio', 'App\Http\Controllers\UserController@store')->name('usuario_register');
 // Guardar datos de ubicacion de un perfil
 Route::post('/perfil/ubication', 'App\Http\Controllers\UserController@setUbication')->name('user_ubication');
-Route::post('/login/qoy', 'App\Http\Controllers\UserController@loginNormal')->name('login_qoy');
+
 Route::post('/perfil/intereses_guardar/', 'App\Http\Controllers\UserController@setPerfilPrimaryInterest')->name('guardar_intereses_primario')->middleware('auth');
 Route::post('/perfil/intereses_guardar/secundario', 'App\Http\Controllers\UserController@setPerfilSecondaryInterest')->name('guardar_intereses_secundario')->middleware('auth');
 
@@ -98,9 +105,5 @@ Route::get('/categorias', 'App\Http\Controllers\CategoryController@category')->n
 Route::get('/categorias/mostrar/{id}', 'App\Http\Controllers\CategoryController@showCategory')->name('mostrar_categoria')->middleware('auth');
 
 
-//login con google y facebook
-Route::get('/auth/redirect/{provider}', 'App\Http\Controllers\GoogleLoginController@redirect');
-Route::get('/callback/{provider}', 'App\Http\Controllers\GoogleLoginController@callback');
-Route::get('/logout', 'App\Http\Controllers\GoogleLoginController@logout')->name('logout');
-//fin login 
+
 
