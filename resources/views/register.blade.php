@@ -10,8 +10,14 @@
 			@csrf
 			<label for="nom" class="text-label-left text-theme">Nombre Completo</label>	
 			<input type="text" name="nombre" id="nom" autocomplete="off" class="input-line-yellow form-control" placeholder="Nombres Paterno Materno">
+			@error('nombre')
+				<small><strong>{{ $message }}</strong></small>
+			@enderror
 			<label for="mail" class="text-label-left text-theme">Correo Electronico</label>
 			<input type="text" name="correo" id="mail" autocomplete="off" class="input-line-yellow form-control" placeholder="correoelectronico@correo.com">
+			@error('correo')
+				<small><strong>{{ $message }}</strong></small>
+			@enderror
 			<input type="hidden" name="provider" value="qoy">
 			<input type="hidden" name="provider_id" value="0000000">
 			<!-- avatar -->
@@ -24,6 +30,9 @@
 			<!-- avatar -->
 			<label for="pwd" class="text-label-left text-theme">Contraseña</label>
 			<input type="password" name="password" id="pwd" autocomplete="off" class="input-line-yellow form-control">
+			@error('password')
+				<small><strong>{{ $message }}</strong></small>
+			@enderror
 			<p class="text-theme">Al registrarte aceptas nuestros <a href="{{route('terminos')}}">terminos y condiciones.</a></p>
 			<button type="submit" class="form-control btn-primary-yellow">Registrarse</button>
 			</form>

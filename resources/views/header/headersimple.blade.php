@@ -60,8 +60,10 @@
           </nav>
         </div>
         <div class="card-body">
-          @if(Session::has('info'))
-          <p class="alert alert-info">{{ Session('info') }}</p>
-          @endif
+            @if (session('info'))
+                <div class="bg-alert" role="alert">
+                    {{ session('info') }}
+                </div>
+            @endif
         </div>
       </header>

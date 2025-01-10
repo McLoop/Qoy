@@ -5,21 +5,21 @@
 	<div class="row">
 		<div class="col-sm-4 col-md-4"></div>
 		<div class="col-sm-4 col-md-4">
-			@foreach($errors->all() as $error)
-
-			<p>{{$error}}</p>
-			@endforeach
-			@dump($errors)
 			<h4 class="text-theme"><strong>Iniciar Sesión en Qoy</strong></h4>
 			<br>
 			<br>
 			<form method="post" action="{{ route('login_qoy')}}">
 			@csrf
 			<label for="mail" class="text-label-left text-theme">Correo Electronico</label>
-			<input type="text" name="usuario" autofocus id="mail" value="{{ old('mail') }}" autocomplete="off" class="input-line-yellow form-control">
+			<input type="text" name="usuario" value="{{old('usuario')}}" autofocus id="mail"  autocomplete="off" class="input-line-yellow form-control">
+				@error('usuario')
+					<small><strong>{{ $message }}</strong></small>
+				@enderror
 			<label for="pwd"  class="text-label-left text-theme">Contraseña</label>
 			<input type="password" name="password" id="pwd" autocomplete="off" class="input-line-yellow form-control">
-			
+				@error('password')
+					<small><strong>{{ $message }}</strong></small>
+				@enderror
 			<label for="chbx" class="text-theme">
 				<input type="checkbox" name="recordar" class="check-yellow" id="chbx">
 			Mantener Sesión iniciada
