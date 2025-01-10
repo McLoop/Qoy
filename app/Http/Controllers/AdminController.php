@@ -27,7 +27,7 @@ class AdminController extends Controller
         join('post', 'thing.post_id', '=', 'post.id')
         ->join('users', 'post.user_id', '=', 'users.id')
         ->orderBy('thing.thing_id', 'DESC')
-        ->paginate(4);
+        ->paginate(5);
 
         $POST_STATE=Lista::POST_STATE;
         $ubication = Lista::UBICATION;

@@ -287,6 +287,13 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+        /*Validacion*/
+        $request->validate([
+            'nombre' => ['required', 'alpha'],
+            'correo' => ['required', 'email'],
+            'password' => ['required', 'min:6'],
+        ]);
+        /*Validacion*/
 
         //foto
         $ruta='/images/avatar/';
