@@ -137,6 +137,7 @@ class Lista {
                 2=>'Solicitado',
                 3=>'Entregado',
                 4=>'Eliminado',
+                5=>'Dado de baja por Qoy',
         );
 
         const POST_STATE = array(

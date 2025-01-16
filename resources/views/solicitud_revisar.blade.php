@@ -16,7 +16,7 @@
             <div class="datos-row">
                 <h6 class="titulo-yellow">Mensaje:</h6>&nbsp;
             </div>
-            <h5>{{$request->message}}</h5>
+            <h6>{{$request->message}}</h6>
             <div class="datos-row">
                 <h6 class="titulo-yellow">Interes:</h6>&nbsp;
             </div>
@@ -27,13 +27,10 @@
             @empty
             @endforelse
             <div class="row">
-            <div class="col-sm-4 col-md-4">
-                <a type="button" class="form-control btn-add btn-primary-yellow text-a-white text-a-no-hover-white" href="{{route('solicitudes_recibidas')}}">Volver atras</a>
-            </div>
-            <div class="col-sm-4 col-md-4">
+            <div class="col-sm-6 col-md-6">
                 <a type="button" class="form-control btn-add btn-primary-yellow text-a-white text-a-no-hover-white" href="{{route('aceptar_solicitud', $request->id)}}">Aceptar</a>
             </div>
-            <div class="col-sm-4 col-md-4">
+            <div class="col-sm-6 col-md-6">
                 <a type="button" class="form-control btn-add btn-primary-yellow text-a-white text-a-no-hover-white" href="{{route('denegar_solicitud', $request->id)}}">Denegar</a>
             </div>
             </div>

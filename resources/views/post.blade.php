@@ -3,16 +3,16 @@
 	<div class="row">
 		<div class="col-sm-2 col-md-2"></div>
 		<div class="col-sm-8 col-md-8">
-			<h5 class="text-theme-yellow">Ultimas publicaciones realizadas</h5><br>
-			<table class="table table-striped">
+			<h5 class="text-theme-yellow">Últimas publicaciónes realizadas.</h5><br>
+			<table class="table table-striped table-bordered">
 				<thead>
-					<th>Articulo</th>
+					<th>Artículo</th>
 					<th>Estado Art.</th>
-					<th>Ubicacion</th>
-					<th>Categoria</th>
+					<th>Ubicación</th>
+					<th>Categoría</th>
 					<th>Usuario</th>
 					<th>Fecha publicación</th>
-					<th>Fecha ult. cambio</th>
+					<th></th>
 				</thead>
 				<tbody>
 				@forelse($things as $thing)
@@ -23,7 +23,7 @@
 					<td>{{ $category_list[$thing->category_id] }}</td>
 					<td><a class="text-theme" href="{{ route('user_perfil', $thing->user_id) }}">{{$thing->name}}</a></td>
 					<td>{{ $thing->created_at->diffForHumans() }}</td>
-					<td>{{ $thing->updated_at->diffForHumans() }}</td>
+					<td><a class="text-a-no-hover btn-primary-yellow-sm" href="{{ route('ver_articulo', $thing->thing_id) }}">Ver</a></td>
 				</tr>
 				@empty
 				@endforelse

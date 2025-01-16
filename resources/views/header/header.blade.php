@@ -114,4 +114,11 @@
             </div>
           </nav>
         </div>
+        <div class="card-body">
+            @if (session('info'))
+                <div class="bg-alert" role="alert">
+                    {{ session('info') }}
+                </div>
+            @endif
+        </div>
       </header>

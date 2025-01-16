@@ -6,6 +6,7 @@
     <div class="col-sm-6 col-md-6">
         <h6>Solicitud para un artículo</h6>
         <h6 class="message_h">Recuerda que el propietario del artículo será el unico que leera tu solicitud y tomara una decisión.</h6>
+        <br><h6 class="message_h">Nueva solicitud para {{$thingName}}.</h6>
         <form action="{{ route('agregar_solicitud') }}" method="post">
             @csrf
             <input hidden="true" type="text" name="idThing" value="{{$idThing}}">

@@ -36,4 +36,19 @@ class AdminController extends Controller
         $category_list=Lista::CATEGORY;
         return view('post', compact('things','POST_STATE','ubication','thing_state','category_list'));
     }
+
+    /**
+     * Da de baja un articulo.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function bajaThing($id, $idPost)
+    {
+        
+        Thing::where('thing_id', $id)->update(['thing_state'=>5]);
+        return redirect()->route('publicaciones_qoy')->with('info','Publicación dad de baja con éxito.');
+        /**/
+        //$post->delete();
+    }
 }

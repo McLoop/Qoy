@@ -43,27 +43,68 @@
         <div class="datos-row">
             <i class="icon-information fas fa-question-circle fa-lg"><span class="tooltip" title="Esta es el estado en el que se encuentra la publicación.">aa</span></i>
             <h6 class="titulo-yellow">Estado actual:</h6>&nbsp;
-            <h6 class="datos-perfil">{{$thing_state[$thing->thing_state]}}</h6>
+            <h6 class="datos-perfil">{{$thing_state[$thing->thing_state]}}.</h6>
         </div>
         <div class="datos-row">
             <i class="icon-information fas fa-question-circle fa-lg"><span class="tooltip" title="Esta es la cantidad de personas que quieren este articulo.">aa</span></i>
             <h6 class="titulo-yellow">Solicitudes recibidas:</h6>&nbsp;
-            <h6 class="datos-perfil">{{$propertyRequest->count()}}</h6>
+            <h6 class="datos-perfil">{{$propertyRequest->count()}} solicitudes.</h6>
         </div>
         <br><br>
         @empty
         <h6 class="message_h">Nada que mostrar</h6>
         @endif
 		
+        @if($thing->user_id == auth()->user()->id || auth()->user()->user_type == 5)
+        <!-- solicitudes -->
+        <h6>Recibido el - Usuario - Estado</h6>
+        @forelse($propertyRequest as $request)
+            <div class="datos-row-father">
+                <div class="datos-row-items">
+                    <h6 class="item-description"><strong>{{$request->created_at->format('d/m/Y')}}</strong></h6>
+                    <h6 class="item-description"><strong>{{$request->name}}</strong></h6>
+                    <h6 class="text-info"><strong>{{$REQUEST_STATE_2[$request->request_state]}}</strong></h6>
+                    @if($request->request_state==1)
+                    <a class="delete-item-th" href="{{ route('revisar_solicitud', $request->id) }}"><i class="icon-green fas fa-chevron-right fa-lg"></i></a>
+                    @else
+                        
+                    @endif
+                </div>
+            </div>
+            @empty
+            <br>
+                <h6 class="message_h">Aún no tienes solicitudes, prueba publicando un articulo.</h6>
+            @endforelse
+            <br><br>
+        @endif
+        <!-- fin solicitudes -->
         <!-- Datos -->
 	</div>
 	<div class="col-sm-4 col-md-4">
         <h6>Fotografia de este producto:</h6><br>
         <img class="img-articulo" src="{{isset($thing->photo) ? Storage::url("$thing->photo") : Storage::url("images/articulos/defaultArticulo.jpg")}}" alt="">
         <br><br>
+    <!-- filtramos por tipo de usuario -->
+        @if($thing->user_id == auth()->user()->id)
         <div class="datos-row">
-            <a type="button" href="{{ route('nueva_solicitud', $thing->thing_id) }}" class="form-control btn-primary-yellow text-a-no-hover-black"><i class="fas fa-user-plus fa-lg"></i>&nbsp;Solicitar</a>
+            <h6 class="message_h">No puedes solicitar propiedad de tu propio artículo.</h6>
         </div><br><br>
+        @elseif($thing->thing_state < 4)
+            <div class="datos-row">
+                <a type="button" href="{{ route('nueva_solicitud', [$thing->thing_id, $thing->thing_name]) }}" class="form-control btn-primary-yellow text-a-no-hover-black"><i class="fas fa-user-plus fa-lg"></i>&nbsp;Solicitar</a>
+            </div><br><br>
+        @else
+        <h6 class="message_h">No hay acciónes disponibles.</h6><br><br>
+        @endif
+    <!-- fin filtrado por tipo de usuario -->
+
+    <!-- admin -->
+        @if(auth()->user()->user_type == 5 && $thing->thing_state < 4)
+             <div class="datos-row">
+                <a type="button" href="{{route('baja_articulo',[$thing->thing_id,$thing->post_id])}}" class="form-control btn-alert text-a-no-hover">Dar de baja esta publicación</a>
+            </div><br><br>
+        @endif
+    <!-- admin -->
 	</div>
 	<div class="col-sm-2 col-md-2"></div>
 </div>

@@ -113,13 +113,23 @@ class ThingController extends Controller
      */
     public function show($idThing)
     {
+        //thing details
         $things = Thing::where('thing_id', $idThing)
         ->join('post', 'thing.post_id', '=', 'post.id')
         ->join('users', 'post.user_id', '=', 'users.id')->get();
         $thing_status = Lista::THING_STATUS;
         $thing_state = Lista::THING_STATE;
-        $propertyRequest = PropertyRequest::where('thing_id', $idThing)->where('request_state',1)->get();
-        return view('ver_articulo', compact('idThing','things','thing_status','thing_state','propertyRequest'));
+        //request details
+        $propertyRequest = PropertyRequest::where('request_state', '!=', 4)
+        ->join('thing', 'property_request.thing_id', '=', 'thing.thing_id')
+        ->join('post', 'thing.post_id', '=', 'post.id')
+        ->join( 'users as usr', DB::raw( 'property_request.user_id' ), '=', DB::raw( 'usr.id' ) )
+        ->select( 'property_request.*','thing.*', DB::raw( 'usr.name, usr.id as usrId') )
+        ->where('property_request.thing_id', $idThing)
+        ->get();
+        $REQUEST_STATE_2=Lista::REQUEST_STATE_2;
+        //returns
+        return view('ver_articulo', compact('idThing','things','thing_status','thing_state','propertyRequest','REQUEST_STATE_2'));
     }
 
     /**

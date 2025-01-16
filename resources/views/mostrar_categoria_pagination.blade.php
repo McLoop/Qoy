@@ -4,7 +4,11 @@
 			<div class="food-card food-card--vertical">
 				<div class="food-card_img">
 					<img src="{{isset($thing->photo) ? Storage::url("$thing->photo") : Storage::url("images/articulos/defaultArticulo.jpg")}}" alt="">
-					<a href="{{ route('nueva_solicitud', $thing->thing_id) }}"><i class="fa fa-plus"></i></a>
+					@if($thing->user_id == auth()->user()->id)
+	        
+				     @else
+				     <a href="{{ route('nueva_solicitud', [$thing->thing_id, $thing->thing_name]) }}"><i class="fa fa-plus"></i></a>
+				     @endif
 				</div>
 			<div class="food-card_content">
 				<div class="food-card_title-section">

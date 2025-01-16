@@ -35,6 +35,7 @@ Route::get('/logout', 'App\Http\Controllers\GoogleLoginController@logout')->name
 
 //administrador 
 Route::get('/post/all/', 'App\Http\Controllers\AdminController@showPosts')->name('publicaciones_qoy')->middleware('auth');
+Route::get('/articulo/baja/{id}/{post_id}', 'App\Http\Controllers\AdminController@bajaThing')->name('baja_articulo')->middleware('auth');
 //fin administrador
 
 
@@ -83,8 +84,8 @@ Route::get('/articulo/remover/{id}/{post_id}', 'App\Http\Controllers\ThingContro
 Route::get('/articulo/ver/{id}', 'App\Http\Controllers\ThingController@show')->name('ver_articulo')->middleware('auth');
 Route::get('/articulo/editar/{id}/{post_id}', 'App\Http\Controllers\ThingController@edit')->name('editar_articulo')->middleware('auth');
 Route::post('/articulo/modificar/', 'App\Http\Controllers\ThingController@storeEdit')->name('modificar_articulo')->middleware('auth');
-//solicitudes
-Route::get('/solicitud/nuevo/{thing_id}', 'App\Http\Controllers\PropertyRequestController@create')->name('nueva_solicitud')->middleware('auth');
+//solicitudes-
+Route::get('/solicitud/nuevo/{thing_id}/{thing_name}', 'App\Http\Controllers\PropertyRequestController@create')->name('nueva_solicitud')->middleware('auth');
 Route::post('/solicitud/agregar/', 'App\Http\Controllers\PropertyRequestController@store')->name('agregar_solicitud')->middleware('auth');
 Route::get('/solicitud/enviadas/', 'App\Http\Controllers\PropertyRequestController@index')->name('solicitudes_enviadas')->middleware('auth');
 Route::get('/solicitud/editar/{id}', 'App\Http\Controllers\PropertyRequestController@edit')->name('editar_solicitud')->middleware('auth');
@@ -92,6 +93,9 @@ Route::get('/solicitud/ver/{id}', 'App\Http\Controllers\PropertyRequestControlle
 Route::post('/solicitud/modificar/', 'App\Http\Controllers\PropertyRequestController@storeEdit')->name('modificar_solicitud')->middleware('auth');
 
 Route::get('/solicitud/recibidas/', 'App\Http\Controllers\PropertyRequestController@recibidas')->name('solicitudes_recibidas')->middleware('auth');
+//recibidas post
+Route::get('/solicitud/recibidas/thing/{id}', 'App\Http\Controllers\PropertyRequestController@recibidasPost')->name('solicitudes_recibidas_post')->middleware('auth');
+
 //REVISION response
 Route::get('/solicitud/revisar/{id}', 'App\Http\Controllers\PropertyRequestController@check')->name('revisar_solicitud')->middleware('auth');
 Route::get('/solicitud/aceptar/{id}', 'App\Http\Controllers\PropertyRequestController@aceptarRequest')->name('aceptar_solicitud')->middleware('auth');

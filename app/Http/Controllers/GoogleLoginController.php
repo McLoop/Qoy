@@ -63,7 +63,7 @@ function createUser($getInfo,$provider){
 public function logout()
 {
     auth()->logout();
-    alert()->success('Fin','cerras');
+    alert()->success('Logout','Se cerró tu sesión');
     return redirect()->to('login');
 }
 

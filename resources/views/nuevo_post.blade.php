@@ -17,6 +17,7 @@
 				<div class="datos-row-items">
 					<h6 class="item-name"><strong>{{$thing->thing_name}}</strong></h6>
 					<h6 class="item-description"><strong>{{$thing->description}}</strong></h6>
+					<a class="edit-item-th" href="{{ route('ver_articulo', $thing->thing_id) }}"><i class="icon-info fas fa-eye fa-lg"></i></a>
 					<a class="edit-item-th" href="{{route('editar_articulo',[$thing->thing_id,$idPost])}}"><i class="icon-green fas fa-edit fa-lg"></i></a>
 					@if(isset($thing))
 						@if($thing->thing_state!=4)
@@ -45,7 +46,6 @@
 					@if($thing->thing_state==1)
 					<div class="col-sm-4 col-md-4">
 						<a type="button" class="form-control btn-add btn-primary-yellow text-a-white text-a-no-hover-white" href="{{route('publicaciones_propias')}}">Cancelar</a>
-						
 					</div>
 					<div class="col-sm-4 col-md-4">
 						<a type="button" class="form-control btn-add btn-primary-yellow text-a-white text-a-no-hover-white" href="{{ route('eliminar_post',$idPost) }}">Eliminar publicación</a>
@@ -53,7 +53,13 @@
 					@endif
 					@if($thing->thing_state!=4)
 					<div class="col-sm-4 col-md-4">
+						<a type="button" class="form-control btn-add btn-primary-yellow text-a-white text-a-no-hover-white" href="{{route('publicaciones_propias')}}">Cancelar</a>
+					</div>
+					<div class="col-sm-4 col-md-4">
 						<a type="button" class="form-control btn-add btn-primary-yellow text-a-white text-a-no-hover-white" href="{{ route('nuevo_articulo',$idPost) }}">Agregar Articulo</a>
+					</div>
+					<div class="col-sm-4 col-md-4">
+						<a type="button" class="form-control btn-add btn-primary-yellow text-a-white text-a-no-hover-white" href="{{ route('eliminar_post',$idPost) }}">Eliminar publicación</a>
 					</div>
 					@endif
 				@else

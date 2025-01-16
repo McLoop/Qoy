@@ -49,6 +49,26 @@ class PropertyRequestController extends Controller
     }
 
     /**
+     * Muestra los request recibidos de un solo post.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function recibidasPost($idPost)
+    {
+        $requests = PropertyRequest::where('request_state', '!=', 4)
+        ->join('thing', 'property_request.thing_id', '=', 'thing.thing_id')
+        ->join('post', 'thing.post_id', '=', 'post.id')
+        ->join( 'users as usr', DB::raw( 'property_request.user_id' ), '=', DB::raw( 'usr.id' ) )
+        ->select( 'property_request.*','thing.*', DB::raw( 'usr.name, usr.id as usrId') )
+        ->where('post.user_id', auth()->user()->id)
+        ->wherewhere('thing_id', $idThing)
+        ->get();
+        $REQUEST_STATE_2=Lista::REQUEST_STATE_2;
+        //return $requests;
+        return view('solicitudes_recibidas', compact('requests','REQUEST_STATE_2'));
+    }
+
+    /**
      * Muestra los request recibidos.
      *
      * @return \Illuminate\Http\Response
@@ -108,10 +128,10 @@ class PropertyRequestController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($idThing)
+    public function create($idThing, $thingName)
     {
     	$INTEREST_GRADE = Lista::INTEREST_GRADE;
-        return view('nueva_solicitud', compact('idThing','INTEREST_GRADE'));
+        return view('nueva_solicitud', compact('idThing','INTEREST_GRADE','thingName'));
     }
 
     /**

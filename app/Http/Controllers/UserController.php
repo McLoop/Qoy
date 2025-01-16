@@ -289,7 +289,7 @@ class UserController extends Controller
     {
         /*Validacion*/
         $request->validate([
-            'nombre' => ['required', 'alpha'],
+            'nombre' => ['required', 'regex:/[a-zA-Z0-9\s]+/'],
             'correo' => ['required', 'email'],
             'password' => ['required', 'min:6'],
         ]);
