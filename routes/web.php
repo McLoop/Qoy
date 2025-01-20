@@ -34,8 +34,12 @@ Route::get('/logout', 'App\Http\Controllers\GoogleLoginController@logout')->name
 //fin login 
 
 //administrador 
+//post
 Route::get('/post/all/', 'App\Http\Controllers\AdminController@showPosts')->name('publicaciones_qoy')->middleware('auth');
 Route::get('/articulo/baja/{id}/{post_id}', 'App\Http\Controllers\AdminController@bajaThing')->name('baja_articulo')->middleware('auth');
+//usuarios
+Route::get('/users/all/', 'App\Http\Controllers\AdminController@showUsers')->name('usuarios_qoy')->middleware('auth');
+Route::get('/users/bussiness/', 'App\Http\Controllers\AdminController@showSolis')->name('solicitudes_qoy')->middleware('auth');
 //fin administrador
 
 

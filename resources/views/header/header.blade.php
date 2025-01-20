@@ -88,6 +88,8 @@
                             <ul>
                               <li class="rd-nav-item li-menu-der"><a hidden="true" href="#">Opciones</a></li>
                               <li class="rd-nav-item li-menu-der"><a href="{{route('publicaciones_qoy')}}">Publicaciones</a></li>
+                              <li class="rd-nav-item li-menu-der"><a href="{{route('usuarios_qoy')}}">Usuarios</a></li>
+                              <li class="rd-nav-item li-menu-der"><a href="{{route('solicitudes_qoy')}}">Solicitudes</a></li>
                               <li class="rd-nav-item li-menu-der"><a href="{{ route('logout') }}">Cerrar Sesión</a></li>
                             </ul>
                           @else

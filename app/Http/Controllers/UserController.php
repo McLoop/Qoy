@@ -185,8 +185,9 @@ class UserController extends Controller
         }
         if($type == 'cambioEmpresa'){
             User::where('id', $user_id)->update(['user_type'=>3]);
+            //enviar correo
             //cambiar para admin
-            return redirect()->route('editar_perfil');
+            return redirect()->route('solicitudes_qoy')->with('info', 'Se aprobo el cambio de cuenta.');
 
         }
 
@@ -341,7 +342,7 @@ class UserController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * vista ver como de un perfil.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response

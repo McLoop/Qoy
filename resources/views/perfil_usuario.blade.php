@@ -58,7 +58,14 @@
         <br><br>
                 <h6 class="message_h">Este usuario aún no tiene insignias.</h6>
                 <br><br>
-    <a type="button" href="{{route('editar_perfil')}}" class="form-control btn-primary-yellow text-a-white text-a-no-hover-white">&nbsp;Volver al perfil</a><br>
+<!-- Admin -->
+    @if(auth()->user()->user_type == 5)
+        <a type="button" href="{{route('editar_perfil')}}" class="form-control btn-alert text-a-white text-a-no-hover">&nbsp;Dar de baja</a><br>
+        <a type="button" href="{{route('usuarios_qoy')}}" class="form-control btn-primary-yellow text-a-white text-a-no-hover-white">&nbsp;Volver atrás</a><br>
+    @else
+        <a type="button" href="{{route('editar_perfil')}}" class="form-control btn-primary-yellow text-a-white text-a-no-hover-white">&nbsp;Volver al perfil</a><br>
+    @endif
+<!-- Fin Admin -->
 	</div>
 	<div class="col-sm-2 col-md-2"></div>
 </div>

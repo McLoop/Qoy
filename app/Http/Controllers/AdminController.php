@@ -51,4 +51,41 @@ class AdminController extends Controller
         /**/
         //$post->delete();
     }
+
+    /**
+     * Muestra todos los usuarios al admin.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showUsers()
+    {
+        $flag=0;
+        $users = User::
+        orderBy('users.id', 'DESC')
+        ->paginate(5);
+
+        $ubication = Lista::UBICATION;
+        $user_types=Lista::USER_TYPES;
+        $user_status=Lista::USER_STATUS;
+        return view('users', compact('users','user_types','ubication','user_status','flag'));
+    }
+
+    /**
+     * Muestra todas las solicitudes para cambio de empresa.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showSolis()
+    {
+        $flag=1;
+        $users = User::
+        where('users.user_type','=',4)
+        ->orderBy('users.id', 'DESC')
+        ->paginate(5);
+
+        $ubication = Lista::UBICATION;
+        $user_types=Lista::USER_TYPES;
+        $user_status=Lista::USER_STATUS;
+        return view('users', compact('users','user_types','ubication','user_status','flag'));
+    }
 }
