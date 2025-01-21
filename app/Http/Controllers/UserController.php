@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\ViewErrorBag;
 use App\Http\Controllers\Lista;
@@ -11,6 +12,7 @@ use Illuminate\Support\Facades\Auth;
 use App\models\User;
 use App\models\Ubication;
 use App\models\Interest;
+use App\mail\SendMail;
 use App\models\Category;
 use Carbon\Carbon;
 
@@ -186,6 +188,12 @@ class UserController extends Controller
         if($type == 'cambioEmpresa'){
             User::where('id', $user_id)->update(['user_type'=>3]);
             //enviar correo
+            $details=[
+                'title'=>'CAMBIO APROBADO',
+                'body'=>'Tu solicitud ha sido revisada y tu cambio aprobado, tu cuenta a sido actualizada a:',
+                'foot'=>'Disfruta de Qoy, ahora con todos los beneficios que te ofrece una cuenta empresarial.'
+            ];
+            Mail::to(auth()->user()->email)->send(new SendMail($details));
             //cambiar para admin
             return redirect()->route('solicitudes_qoy')->with('info', 'Se aprobo el cambio de cuenta.');
 

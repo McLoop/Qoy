@@ -21,6 +21,9 @@
 					<th>Tipo</th>
 					<th>Cuenta</th>
 					<th></th>
+					@if($flag)
+					<th></th>
+					@endif
 				</thead>
 				<tbody>
 				@forelse($users as $user)
@@ -44,6 +47,7 @@
 					<td>{{ $user_types[$user->user_type] }}</td>
 					<td>{{ $user_status[$user->user_state] }}</td>
 					@if($flag)
+					<td><a class="text-a-no-hover btn-primary-yellow-sm" href="{{ route('user_perfil', $user->id) }}">Ver</a></td>
 					<td><a class="text-a-no-hover text-a-white btn-alert-sm" href="{{ route('editar_usuario', [$user->id,'cambioEmpresa']) }}">Aprobar</a></td>
 					@else
 					<td><a class="text-a-no-hover btn-primary-yellow-sm" href="{{ route('user_perfil', $user->id) }}">Ver</a></td>
