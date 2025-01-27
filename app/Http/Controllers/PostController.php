@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\models\Post;
 use App\models\Thing;
+use App\models\Achievement;
 use App\Http\Controllers\Lista;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -62,11 +63,26 @@ class PostController extends Controller
         }else{
         	foreach ($things as $thing) {
 				//mandar notificaciones
+
+                //actualizar usuario
+                $posts = Post::where('user_id', auth()->user()->id)->get();
+                if (count($posts)==0) {
+                    Achievement::create([
+                    'user_id'=>auth()->user()->id,
+                    'achievement_id'=>1,
+                    'status'=>1]);
+                } 
+                if (count($posts)==5) {
+                    Achievement::create([
+                    'user_id'=>auth()->user()->id,
+                    'achievement_id'=>5,
+                    'status'=>1]);
+                } 
         		Thing::where('thing_id', $thing->thing_id)->update(['thing_state'=>1]);
         	}
         	Post::where('id', $idPost)->update(['post_state'=>1]);
             toast('Se realizo tu publicación','info');
-		    return redirect()->route('feed');
+		    return redirect()->route('feed')->with('info','Se subió tu publicación.');
         }
     }
 

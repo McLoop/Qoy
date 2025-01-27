@@ -11,6 +11,7 @@ use Illuminate\Support\Str;
 class Thing extends Model
 {
     protected $table = 'thing';
+    protected $primaryKey = 'thing_id';
 	protected $fillable = ['thing_name', 'description', 'photo', 'status', 'thing_type', 'thing_state','post_id', 'ubication', 'category_id'];
 
 	public static function setImagenArticulo($foto, $actual = false)

@@ -14,19 +14,26 @@
 			<label for="nom" class="text-label-left text-theme">Nombre del artículo</label><i class="icon-information fas fa-question-circle fa-lg"><span class="tooltip" title="Debes rellenar este campo con el nombre del objeto de manera literal.">aa</span></i>
 			</div>
 			<input type="text" name="nombre" id="nom" autocomplete="off" class="input-line-yellow form-control" placeholder="Mesa de Jardín">
-
+			@error('nombre')
+				<small><strong>{{ $message }}</strong></small>
+			@enderror
 
 			<div class="datos-row"> 
 			<label for="des" class="text-label-left text-theme">Descripción</label><i class="icon-information fas fa-question-circle fa-lg"><span class="tooltip" title="Agrega una pequeña descripción acerca de este artículo.">aa</span></i>
 			</div>
 			<input type="text" name="descripcion" id="des" autocomplete="off" class="input-line-yellow form-control" placeholder="Pequeña mesa de jardin de madera">
-
+			@error('descripcion')
+				<small><strong>{{ $message }}</strong></small>
+			@enderror
 			<div class="datos-row"> 
 			<label for="foto" class="text-label-left text-theme">Foto del artículo</label><i class="icon-information fas fa-question-circle fa-lg"><span class="tooltip" title="Agrega una foto real del articulo, si subes una foto que no corresponde te arriesgas a ser denunciado y perder tu perfil.">aa</span></i>
 			</div>
 			<!-- foto -->
 			<div id="inputFoto">
             <input type="file" name="foto_up" id="foto" data-initial-preview="{{isset($data->avatar) ? Storage::url("images/avatar/$data->avatar") : ''}}" accept="image/*"/>
+            @error('foto_up')
+				<small><strong>{{ $message }}</strong></small>
+			@enderror
 			</div>
 			<!-- foto -->
 

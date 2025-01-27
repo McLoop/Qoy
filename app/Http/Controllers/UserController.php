@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Auth;
 use App\models\User;
 use App\models\Ubication;
 use App\models\Interest;
+use App\models\Achievement;
 use App\mail\SendMail;
 use App\models\Category;
 use Carbon\Carbon;
@@ -69,6 +70,8 @@ class UserController extends Controller
     {
         //sacamos las ubicaiones de bdd
         $ubicacion = Ubication::where('ubication_status', 1)->get();
+        //sacamos logros
+        $logros = Achievement::where('user_id', auth()->user()->id)->get();
         if (auth()->user()->user_state==0) {
             toast('Primero debes configurar tu perfil','info');
         } else {}
@@ -84,7 +87,7 @@ class UserController extends Controller
         $regiones = Lista::REGION;
         $user_ubication = Lista::UBICATION;
         $zonas = Lista::ZONA;
-        return view('perfil', compact('user_types', 'user_status','ubicacion', 'regiones', 'zonas', 'user_ubication','user_types_message', 'user_message'))->with('info', 'Configura tu zona de residencia.');
+        return view('perfil', compact('user_types', 'user_status','ubicacion', 'regiones', 'zonas', 'user_ubication','user_types_message', 'user_message','logros'))->with('info', 'Configura tu zona de residencia.');
     }
 
     /**

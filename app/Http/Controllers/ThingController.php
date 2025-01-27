@@ -41,6 +41,13 @@ class ThingController extends Controller
      */
     public function store(Request $request)
     {
+        /*Validacion*/
+        $request->validate([
+            'nombre' => ['required', 'regex:/[a-zA-Z0-9\s]+/'],
+            'descripcion' => ['required'],
+            'foto_up' => ['required']
+        ]);
+        /*Validacion*/
     	$ruta='/images/articulos/';
         $foto;
         $idPost=request('idPost');
@@ -193,7 +200,7 @@ class ThingController extends Controller
                 Thing::where('thing_id', $thing->thing_id)->update(['thing_state'=>4]);
             }
             Post::where('id', $idPost)->update(['post_state'=>4]);
-            toast('Se realizo tu publicación','info');
+            toast('Publicación eliminada','info');
             return redirect()->route('publicaciones_propias');
         }
     }
@@ -207,7 +214,6 @@ class ThingController extends Controller
     public function destroy($idPost)
     {
     	$things = Thing::where('post_id', $idPost)->get();
-
         if($things->isEmpty()){
         	//borrar solo post
         	$post = Post::find($idPost);
