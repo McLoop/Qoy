@@ -55,12 +55,20 @@
 	</div>
 	<div class="col-sm-4 col-md-4">
 	<h6>Insignias de usuario:</h6>
+        <div class="logros">
+        @forelse($logros as $logro)
+            <img class="img-square" src="{{Storage::url('images/logros/'.$logro->achievement_id.'.png')}}" width="60" height="60">
+            
+        @empty
+        <h6 class="message_h">Este usuario aún no tiene insignias.</h6>
+        @endforelse
         <br><br>
-                <h6 class="message_h">Este usuario aún no tiene insignias.</h6>
-                <br><br>
+        </div>
+        <br><br>
+
 <!-- Admin -->
     @if(auth()->user()->user_type == 5)
-        <a type="button" href="{{route('editar_perfil')}}" class="form-control btn-alert text-a-white text-a-no-hover">&nbsp;Dar de baja</a><br>
+        <a type="button" href="{{route('baja_user',[$user->id])}}" class="form-control btn-alert text-a-white text-a-no-hover">&nbsp;Dar de baja</a><br>
         <a type="button" href="{{route('usuarios_qoy')}}" class="form-control btn-primary-yellow text-a-white text-a-no-hover-white">&nbsp;Volver atrás</a><br>
     @else
         <a type="button" href="{{route('editar_perfil')}}" class="form-control btn-primary-yellow text-a-white text-a-no-hover-white">&nbsp;Volver al perfil</a><br>

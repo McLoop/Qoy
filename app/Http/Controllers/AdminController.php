@@ -27,7 +27,7 @@ class AdminController extends Controller
         join('post', 'thing.post_id', '=', 'post.id')
         ->join('users', 'post.user_id', '=', 'users.id')
         ->orderBy('thing.thing_id', 'DESC')
-        ->paginate(5);
+        ->paginate(10);
 
         $POST_STATE=Lista::POST_STATE;
         $ubication = Lista::UBICATION;
@@ -47,7 +47,7 @@ class AdminController extends Controller
     {
         
         Thing::where('thing_id', $id)->update(['thing_state'=>5]);
-        return redirect()->route('publicaciones_qoy')->with('info','Publicación dad de baja con éxito.');
+        return redirect()->route('publicaciones_qoy')->with('info','Publicación dado de baja con éxito.');
         /**/
         //$post->delete();
     }
@@ -62,13 +62,29 @@ class AdminController extends Controller
         $flag=0;
         $users = User::
         orderBy('users.id', 'DESC')
-        ->paginate(5);
+        ->paginate(10);
 
         $ubication = Lista::UBICATION;
         $user_types=Lista::USER_TYPES;
         $user_status=Lista::USER_STATUS;
         return view('users', compact('users','user_types','ubication','user_status','flag'));
     }
+
+    /**
+     * Da de baja un usuario.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function bajaUser($id)
+    {
+        
+        User::where('id', $id)->update(['user_state'=>5]);
+        return redirect()->route('usuarios_qoy')->with('msg','Usuario dado de baja con éxito.');
+        /**/
+        //$post->delete();
+    }
+
 
     /**
      * Muestra todas las solicitudes para cambio de empresa.

@@ -1,8 +1,8 @@
 @include('head.head')
 <div class="container-content-page container-back">
 	<div class="row">
-		<div class="col-sm-2 col-md-2"></div>
-		<div class="col-sm-8 col-md-8">
+		<div class="col-sm-1 col-md-1"></div>
+		<div class="col-sm-10 col-md-10">
 			@if($flag)
 				<h5 class="text-theme-yellow">Solicitudes para cambio de cuenta a Empresa</h5><br>
 				<h6 class="message_h">Estos usuarios quieren cambiar a una cuenta Empresarial, asegurate de revisar sus perfiles antes de aprobar una solicitud.</h6><br>
@@ -63,7 +63,7 @@
 				{!! $users->links() !!}
 			</div>
 		</div>
-		<div class="col-sm-2 col-md-2"></div>
+		<div class="col-sm-1 col-md-1"></div>
 	</div>
 	
 

@@ -190,6 +190,11 @@ class UserController extends Controller
         }
         if($type == 'cambioEmpresa'){
             User::where('id', $user_id)->update(['user_type'=>3]);
+            //logro
+            Achievement::create([
+                    'user_id'=>$user_id,
+                    'achievement_id'=>4,
+                    'status'=>1]);
             //enviar correo
             $details=[
                 'title'=>'CAMBIO APROBADO',
@@ -272,12 +277,15 @@ class UserController extends Controller
      */
     public function addDatos(Request $request)
     {
-        //si el usuario no tiene ubicacion la creamos
          User::where('id', auth()->user()->id)->update(['user_ci'=>request('carnet')]);
          User::where('id', auth()->user()->id)->update(['user_phone'=>request('tel')]);
          User::where('id', auth()->user()->id)->update(['user_dir'=>request('direccion')]);
          User::where('id', auth()->user()->id)->update(['user_dir'=>request('direccion')]);
          User::where('id', auth()->user()->id)->update(['user_state'=>4]);
+         Achievement::create([
+                    'user_id'=>auth()->user()->id,
+                    'achievement_id'=>2,
+                    'status'=>1]);
         return redirect()->route('editar_perfil')->with('info', 'Ubicación agregada correctamente');
     }
 
@@ -347,7 +355,7 @@ class UserController extends Controller
             alert()->success('No olvides configurar tu perfil', 'Login con exito');
             return redirect()->route('editar_perfil');
         }else{
-            return redirect()->route('login')->with('info', 'Credenciales incorrectas, vuelve a intentarlo.');;
+            return redirect()->route('login')->with('info', 'Credenciales incorrectas, vuelve a intentarlo.');
         }
         return redirect()->route('editar_perfil');
     }
@@ -360,6 +368,8 @@ class UserController extends Controller
      */
     public function show($id)
     {
+        //sacamos logros
+        $logros = Achievement::where('user_id', $id)->get();
         $user_types = Lista::USER_TYPES;
         $user_status = Lista::USER_STATUS;
         $user_message = Lista::USER_MESSAGE;
@@ -370,7 +380,7 @@ class UserController extends Controller
         $user=$user->get(0);
         if($user!=null)
         {
-        return view('perfil_usuario', compact('user_types', 'user_status', 'user_message', 'user', 'regiones', 'zonas','user', 'user_ubication'));
+        return view('perfil_usuario', compact('user_types', 'user_status', 'user_message', 'user', 'regiones', 'zonas','user', 'user_ubication','logros'));
 
         }
         

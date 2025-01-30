@@ -76,12 +76,15 @@
         @endif
         <br>
         <h6>Insignias de usuario:</h6>
+        <div class="logros">
         @forelse($logros as $logro)
             <img class="img-square" src="{{Storage::url('images/logros/'.$logro->achievement_id.'.png')}}" width="60" height="60">
-            <br><br>
+            
         @empty
 		<h6 class="message_h">Este usuario aún no tiene insignias.</h6>
         @endforelse
+        <br><br>
+        </div>
 		<br><br>
 
 	</div>

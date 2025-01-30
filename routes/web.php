@@ -40,6 +40,7 @@ Route::get('/articulo/baja/{id}/{post_id}', 'App\Http\Controllers\AdminControlle
 //usuarios
 Route::get('/users/all/', 'App\Http\Controllers\AdminController@showUsers')->name('usuarios_qoy')->middleware('auth');
 Route::get('/users/bussiness/', 'App\Http\Controllers\AdminController@showSolis')->name('solicitudes_qoy')->middleware('auth');
+Route::get('/usera/baja/{id}', 'App\Http\Controllers\AdminController@bajaUser')->name('baja_user')->middleware('auth');
 //fin administrador
 
 

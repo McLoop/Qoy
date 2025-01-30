@@ -122,5 +122,10 @@
                     {{ session('info') }}
                 </div>
             @endif
+            @if (session('msg'))
+                <div class="bg-success" role="alert">
+                    {{ session('msg') }}
+                </div>
+            @endif
         </div>
       </header>
