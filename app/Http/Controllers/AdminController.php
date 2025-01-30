@@ -10,7 +10,10 @@ use Illuminate\Support\Facades\Auth;
 use App\models\Thing;
 use App\models\User;
 use App\models\Ubication;
+use App\models\Achievement;
 use App\models\Interest;
+use App\models\PropertyRequest;
+use App\models\Post;
 use App\models\Category;
 use Carbon\Carbon;
 
@@ -68,6 +71,40 @@ class AdminController extends Controller
         $user_types=Lista::USER_TYPES;
         $user_status=Lista::USER_STATUS;
         return view('users', compact('users','user_types','ubication','user_status','flag'));
+    }
+
+    /**
+     * Ver un usuario.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function showUser($id)
+    {
+        //sacamos logros
+        $logros = Achievement::where('user_id', $id)->get();
+        $user_types = Lista::USER_TYPES;
+        $user_status = Lista::USER_STATUS;
+        $user_message = Lista::USER_MESSAGE;
+        $regiones = Lista::REGION;
+        $user_ubication = Lista::UBICATION;
+        $zonas = Lista::ZONA;
+        $user = User::where('id', $id)->get();
+        $user=$user->get(0);
+        //post del usuario
+        $posts = Post::where('user_id', $id)->get();
+        $POST_STATE=Lista::POST_STATE;
+        //solicitudes del usuario
+        $requests = PropertyRequest::where('user_id', $id)
+        ->join('thing', 'property_request.thing_id', '=', 'thing.thing_id')
+        ->get();
+        $REQUEST_STATE=Lista::REQUEST_STATE;
+        if($user!=null)
+        {
+        return view('perfil_usuario', compact('user_types', 'user_status', 'user_message', 'user', 'regiones', 'zonas','user', 'user_ubication','logros','posts','POST_STATE','requests','REQUEST_STATE'));
+
+        }
+        
     }
 
     /**

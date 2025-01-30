@@ -51,20 +51,65 @@
         <div class="datos-row">
             <h6 class="message_h">{{$user_message[$user->user_state]}}</h6>
         </div>
-        <br><br><br>
+        <br>
+        <!-- Post vista admin -->
+        @if(auth()->user()->user_type == 5)
+            <h6 class="text-primary-yellow">PUBLICACIONES REALIZADAS:</h6><br>
+            <h6>Publicado el - Ultima edición - Estado</h6>
+            @forelse($posts as $post)
+            <div class="datos-row-father">
+                <div class="datos-row-category">
+                    <h6 class="item-name-fecha"><strong>{{$post->created_at->format('d/m/Y')}}</strong>&nbsp;-</h6>
+                    <h6 class="item-name-fecha"><strong>{{$post->updated_at->format('d/m/Y')}}</strong></h6>
+                    <h6 class="text-info"><strong>{{$POST_STATE[$post->post_state]}}</strong></h6>
+                    @if($post->post_state==4)
+                    <a class="delete-item-th" href="{{ route('editar_post', $post->id) }}"><i class="icon-green fas fa-eye fa-lg"></i></a>
+                    @else
+                    <a class="delete-item-th" href="{{ route('editar_post', $post->id) }}">
+                    <i class="icon-green fas fa-eye fa-lg"></i></a>
+                    @endif
+                </div>
+            </div>
+            @empty
+            <br>
+                <h6 class="message_h">Este usuario no realizó ninguna publicación.</h6>
+            @endforelse
+        @endif
+        <!-- Fin post vista admin -->
+        <br><br>
 	</div>
 	<div class="col-sm-4 col-md-4">
 	<h6>Insignias de usuario:</h6>
-        <div class="logros">
+    <div class="logros">
         @forelse($logros as $logro)
             <img class="img-square" src="{{Storage::url('images/logros/'.$logro->achievement_id.'.png')}}" width="60" height="60">
-            
         @empty
         <h6 class="message_h">Este usuario aún no tiene insignias.</h6>
         @endforelse
         <br><br>
-        </div>
-        <br><br>
+    </div><br>
+    <!-- solicitudes del usuario admin -->
+    @if(auth()->user()->user_type == 5)
+    <h6 class="text-primary-yellow">SOLICITUDES ENVIADAS:</h6><br>
+    <h6>Articulo - Enviado el - Estado</h6>
+        @forelse($requests as $request)
+            <div class="datos-row-father">
+                <img class="img-square" src="{{Storage::url($request->photo)}}" width="60" height="60">
+                <div class="datos-row-items">
+                    <h6 class="item-name"><strong>{{$request->thing_name}}</strong></h6>
+                    <h6 class="item-description"><strong>{{$request->created_at->format('d/m/Y')}}</strong></h6>
+                    <h6 class="text-info"><strong>{{$REQUEST_STATE[$request->request_state]}}</strong></h6>
+                    
+                    <a class="delete-item-th" href="{{ route('solicitud_eliminada', $request->id) }}"><i class="icon-green fas fa-eye fa-lg"></i></a>
+                </div>
+            </div>
+        @empty
+        <br>
+            <h6 class="message_h">Este usuario no tiene solicitudes para articulos.</h6>
+        @endforelse
+    @endif
+    <!-- solicitudes del usuario admin -->
+    <br><br>
 
 <!-- Admin -->
     @if(auth()->user()->user_type == 5)

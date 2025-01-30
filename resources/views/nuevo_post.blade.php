@@ -18,11 +18,15 @@
 					<h6 class="item-name"><strong>{{$thing->thing_name}}</strong></h6>
 					<h6 class="item-description"><strong>{{$thing->description}}</strong></h6>
 					<a class="edit-item-th" href="{{ route('ver_articulo', $thing->thing_id) }}"><i class="icon-info fas fa-eye fa-lg"></i></a>
+					@if(auth()->user()->user_type == 5)
+
+					@else
 					@if(isset($thing))
 						@if($thing->thing_state!=4)
 						<a class="edit-item-th" href="{{route('editar_articulo',[$thing->thing_id,$idPost])}}"><i class="icon-green fas fa-edit fa-lg"></i></a>
 						<a class="delete-item-th" href="{{route('quitar_articulo',[$thing->thing_id,$idPost])}}"><i class="icon-red fas fa-times fa-lg"></i></a>
 						@endif
+					@endif
 					@endif
 				</div>
 			</div>
@@ -32,6 +36,9 @@
 			@endforelse
 			<!--Fin articulos añadidos-->
 		</div>
+		@if(auth()->user()->user_type == 5)
+		<p>No hay acciónes disponibles</p>
+		@else
 			<div class="row">
 				@if(isset($thing))
 					@if($thing->thing_state==0)
@@ -68,8 +75,8 @@
 				<!--<div class="col-sm-4 col-md-4">
 					<button type="button" class="form-control btn-add btn-primary-yellow text-a-white text-a-no-hover-white" onclick="notify('a')">Publicar Post</button>
 				</div>-->
-				
 			</div>
+		@endif
 		</div>
 		<div class="col-sm-3 col-md-3"></div>
 	</div>

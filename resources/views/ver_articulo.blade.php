@@ -101,7 +101,7 @@
     <!-- admin -->
         @if(auth()->user()->user_type == 5 && $thing->thing_state < 4)
              <div class="datos-row">
-                <a type="button" href="{{route('baja_articulo',[$thing->thing_id,$thing->post_id])}}" class="form-control btn-alert text-a-no-hover text-a-white">Dar de baja esta publicación</a>
+                <a type="button" href="{{route('baja_articulo',[$thing->thing_id,$thing->post_id])}}" class="form-control btn-alert text-a-no-hover text-a-white">Dar de baja este Articulo</a>
             </div><br><br>
         @endif
     <!-- admin -->

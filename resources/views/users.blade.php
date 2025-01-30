@@ -50,7 +50,7 @@
 					<td><a class="text-a-no-hover btn-primary-yellow-sm" href="{{ route('user_perfil', $user->id) }}">Ver</a></td>
 					<td><a class="text-a-no-hover text-a-white btn-alert-sm" href="{{ route('editar_usuario', [$user->id,'cambioEmpresa']) }}">Aprobar</a></td>
 					@else
-					<td><a class="text-a-no-hover btn-primary-yellow-sm" href="{{ route('user_perfil', $user->id) }}">Ver</a></td>
+					<td><a class="text-a-no-hover btn-primary-yellow-sm" href="{{ route('user_perfil_show', $user->id) }}">Ver</a></td>
 					@endif
 				</tr>
 				@empty
