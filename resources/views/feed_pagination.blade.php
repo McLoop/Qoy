@@ -39,7 +39,12 @@
 					    <span class="badge bg-info">{{ $thing_status[$thing->status] }}</span>
 					</div>&nbsp;
 					<div class="pull-right">
-					    <span class="badge bg-success">{{ $thing_state[$thing->thing_state] }}</span>
+					       @if($thing->thing_state>=4)
+							<span class="badge bg-alert">{{ $thing_state[$thing->thing_state] }}</span>
+					       @else
+							<span class="badge bg-success">{{ $thing_state[$thing->thing_state] }}</span>
+					       @endif
+					            
 					</div>
 				</div>
 			</div>

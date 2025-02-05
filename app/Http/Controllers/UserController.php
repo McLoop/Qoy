@@ -267,7 +267,7 @@ class UserController extends Controller
         //si el usuario ya tiene ubicacion la actualizamos
          User::where('id', auth()->user()->id)->update(['user_ubication'=>request('ubication')]);
         }
-        return redirect()->route('editar_perfil')->with('info', 'Ubicación agregada correctamente');
+        return redirect()->route('editar_perfil')->with('msg', 'Ubicación agregada correctamente');
     }
 
     /**
@@ -277,16 +277,22 @@ class UserController extends Controller
      */
     public function addDatos(Request $request)
     {
+        /*Validacion*/
+        $request->validate([
+            'carnet' => ['required', 'regex:/[0-9]/', 'min:6'],
+            'telefono' => ['required', 'regex:/[0-9]/', 'min:8'],
+            'direccion' => ['required'],
+        ]);
+        /*Validacion*/
          User::where('id', auth()->user()->id)->update(['user_ci'=>request('carnet')]);
-         User::where('id', auth()->user()->id)->update(['user_phone'=>request('tel')]);
-         User::where('id', auth()->user()->id)->update(['user_dir'=>request('direccion')]);
+         User::where('id', auth()->user()->id)->update(['user_phone'=>request('telefono')]);
          User::where('id', auth()->user()->id)->update(['user_dir'=>request('direccion')]);
          User::where('id', auth()->user()->id)->update(['user_state'=>4]);
          Achievement::create([
                     'user_id'=>auth()->user()->id,
                     'achievement_id'=>2,
                     'status'=>1]);
-        return redirect()->route('editar_perfil')->with('info', 'Ubicación agregada correctamente');
+        return redirect()->route('editar_perfil')->with('msg', 'Datos agregados correctamente');
     }
 
     /**
@@ -309,9 +315,9 @@ class UserController extends Controller
     {
         /*Validacion*/
         $request->validate([
-            'nombre' => ['required', 'regex:/[a-zA-Z0-9\s]+/'],
+            'nombre' => ['required', 'regex:/[a-zA-Z\s]+/'],
             'correo' => ['required', 'email'],
-            'password' => ['required', 'min:6'],
+            'password' => ['required', 'regex:/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$/'],
         ]);
         /*Validacion*/
 

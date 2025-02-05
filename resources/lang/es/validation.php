@@ -130,8 +130,11 @@ return [
     */
 
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
+        'nombre' => [
+            'regex' => 'El formato del campo :attribute no acepta números.',
+        ],
+        'password' => [
+            'regex' => 'El formato del campo :attribute debe contener al menos una mayúscula, una minúscula, un número y un caracter especial. Mínimo 8.',
         ],
     ],
 

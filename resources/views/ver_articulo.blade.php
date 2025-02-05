@@ -90,9 +90,19 @@
             <h6 class="message_h">No puedes solicitar propiedad de tu propio artículo.</h6>
         </div><br><br>
         @elseif($thing->thing_state < 4)
-            <div class="datos-row">
+        <!-- ver si ya esta solicitado-->
+        @forelse($propertyRequest as $request)
+            @if($request->user_id == auth()->user()->id)
+                <h6 class="message_h">Ya enviaste una solicitud para este artículo.</h6><br><br>
+            @else
+                <div class="datos-row">
                 <a type="button" href="{{ route('nueva_solicitud', [$thing->thing_id, $thing->thing_name]) }}" class="form-control btn-primary-yellow text-a-no-hover-black"><i class="fas fa-user-plus fa-lg"></i>&nbsp;Solicitar</a>
-            </div><br><br>
+                </div><br><br>
+            @endif
+        @empty
+
+        @endforelse
+        <!-- fin ver-->
         @else
         <h6 class="message_h">No hay acciónes disponibles.</h6><br><br>
         @endif

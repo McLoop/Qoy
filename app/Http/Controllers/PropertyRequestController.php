@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\models\Thing;
 use App\models\PropertyRequest;
+use App\models\User;
+use App\models\Achievement;
 use App\Http\Controllers\Lista;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
@@ -152,6 +154,12 @@ class PropertyRequestController extends Controller
                 'degree_interest'=>request('interes'),
                 'message'=>request('mensaje')
             ]);
+            User::where('id', auth()->user()->id)->update(['user_type'=>2]);
+            //logro
+            Achievement::create([
+                    'user_id'=> auth()->user()->id,
+                    'achievement_id'=>1,
+                    'status'=>1]);
             //conseguimos el ultimo id
             DB::commit();
         } catch (Exception $e) {
